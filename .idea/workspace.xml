@@ -28,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="116">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/SymbolTable/CheckST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="235" column="23" selection-start-line="235" selection-start-column="23" selection-end-line="235" selection-end-column="23" />
+            <state relative-caret-position="512">
+              <caret line="307" column="38" selection-start-line="307" selection-start-column="38" selection-end-line="307" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -203,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/beta1/parser/mxErrorRecorder.java" />
         <option value="$PROJECT_DIR$/src/beta1/parser/mxErrorListener.java" />
         <option value="$PROJECT_DIR$/src/beta1/AST/ParenthesesExpr.java" />
-        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
         <option value="$PROJECT_DIR$/src/beta1/AST/VarExpr.java" />
         <option value="$PROJECT_DIR$/src/beta1/AST/MemberExpr.java" />
         <option value="$PROJECT_DIR$/src/beta1/AST/MethodExpr.java" />
@@ -217,10 +216,11 @@
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ProgramST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ArrayST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/CheckST.java" />
+        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="15" />
     <option name="width" value="1400" />
@@ -380,12 +380,12 @@
       <workItem from="1555658963449" duration="11657000" />
       <workItem from="1555676595035" duration="11341000" />
       <workItem from="1555732035762" duration="34590000" />
-      <workItem from="1555775845413" duration="5443000" />
+      <workItem from="1555775845413" duration="5513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219576000" />
+    <option name="totallyTimeSpent" value="219646000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,8 +409,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997833" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -444,12 +444,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/beta1/Main.java</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/beta1/SymbolTable/CheckST.java</url>
           <line>82</line>
@@ -863,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/AST/DefState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -899,8 +883,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/SymbolTable/CheckST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="235" column="23" selection-start-line="235" selection-start-column="23" selection-end-line="235" selection-end-column="23" />
+        <state relative-caret-position="512">
+          <caret line="307" column="38" selection-start-line="307" selection-start-column="38" selection-end-line="307" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
