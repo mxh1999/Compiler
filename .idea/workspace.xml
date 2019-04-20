@@ -19,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="270">
+              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/SymbolTable/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="555">
+              <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1343#1344#0" expanded="true" />
@@ -191,11 +191,11 @@
         <option value="$PROJECT_DIR$/src/beta1/mx.g4" />
         <option value="$PROJECT_DIR$/src/beta1/AST/BuildAST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/CheckST.java" />
-        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ProgramST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/BuildST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ArrayST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
       </list>
     </option>
   </component>
@@ -372,12 +372,12 @@
       <workItem from="1555652959280" duration="1306000" />
       <workItem from="1555658963449" duration="11657000" />
       <workItem from="1555676595035" duration="11341000" />
-      <workItem from="1555732035762" duration="22454000" />
+      <workItem from="1555732035762" duration="22687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201997000" />
+    <option name="totallyTimeSpent" value="202230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -830,16 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/AST/ClassNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -883,12 +873,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/SymbolTable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="555">
+          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1343#1344#0" expanded="true" />
             <element signature="e#1388#1389#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
