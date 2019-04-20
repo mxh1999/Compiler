@@ -20,11 +20,8 @@ public class CheckST implements ASTVisitor {
 
     @Override
     public void visit(ProgNode node) throws Exception {
-        for (ClassNode i : node.classlist) {
-            visit(i);
-        }
-        for (FuncNode i: node.funclist) {
-            visit(i);
+        for (Node i : node.all) {
+            i.accept(this);
         }
     }
 
@@ -270,7 +267,8 @@ public class CheckST implements ASTVisitor {
             if (node.name.get(0) instanceof VarExpr) getGlobalVar((VarExpr)node.name.get(0));else getGlobalFunc((FuncExpr)node.name.get(0));
             node.type = node.name.get(0).type;
         }   else {
-            if (node.name.get(node.name.size()-1) instanceof VarExpr) visit((VarExpr)node.name.get(node.name.size()-1),now);else visit((FuncExpr)node.name.get(node.name.size()-1),now);
+            if (node.name.get(node.name.size()-1) instanceof VarExpr) visit((VarExpr)node.name.get(node.name.size()-1),now);else visit((FuncExpr)node.name );
+            node.name.get(node.name.size()-1).accept(this);
             node.type = node.name.get(node.name.size()-1).type;
         }
     }
@@ -354,5 +352,10 @@ public class CheckST implements ASTVisitor {
             if (!ret.para.get(i).ac(node.para.get(i).type)) throw new Exception("parameter type error");
         }
         node.type = ret.returnvalue;
+    }
+
+    @Override
+    public void visit(EmptyState node) throws Exception {
+
     }
 }

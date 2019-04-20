@@ -11,15 +11,29 @@ public class BuildAST extends mxBaseVisitor<Object>{
 
     @Override
     public Object visitProgram(mxParser.ProgramContext ctx) {
-        for (mxParser.ClassDefinitionContext i:ctx.classDefinition()) {
-            prog.add((ClassNode)visit(i));
+        for (mxParser.DefinitionContext i:ctx.definition()) {
+            Object ret = i.accept(this);
+            if (ret instanceof ClassNode) prog.add((ClassNode)ret);
+            if (ret instanceof VariableNode) prog.add((VariableNode)ret);
+            if (ret instanceof FuncNode) prog.add((FuncNode)ret);
         }
-        for (mxParser.VariableDefinitionContext i:ctx.variableDefinition()){
-            prog.add((VariableNode)visit(i));
-        }
-        for (mxParser.FunctionDefinitionContext i:ctx.functionDefinition())
-            prog.add((FuncNode)visit(i));
         return null;
+    }
+
+
+    @Override
+    public ClassNode visitClassdef(mxParser.ClassdefContext ctx) {
+        return visitClassDefinition(ctx.classDefinition());
+    }
+
+    @Override
+    public VariableNode visitVardef(mxParser.VardefContext ctx) {
+        return visitVariableDefinition(ctx.variableDefinition());
+    }
+
+    @Override
+    public FuncNode visitFuncdef(mxParser.FuncdefContext ctx) {
+        return visitFunctionDefinition(ctx.functionDefinition());
     }
 
     @Override
@@ -252,15 +266,19 @@ public class BuildAST extends mxBaseVisitor<Object>{
 
     @Override
     public LeftValueExpr visitVar(mxParser.VarContext ctx) {
-        return (LeftValueExpr)visit(ctx.leftValue());
+        LeftValueExpr ret = new LeftValueExpr();
+        ret.add((Expr)visit(ctx.unknown()));
+        return ret;
     }
 
     @Override
     public LeftValueExpr visitLeftValue(mxParser.LeftValueContext ctx) {
         LeftValueExpr ret = new LeftValueExpr();
-        for (mxParser.UnknownContext i : ctx.unknown()) {
-            ret.add((Expr)visit(i));
-        }
+        Expr tmp = (Expr)visit(ctx.expression());
+        if (tmp instanceof LeftValueExpr) {
+            ret = (LeftValueExpr)tmp;
+        }   else ret.add(tmp);
+        ret.add((Expr)visit(ctx.unknown()));
         return ret;
     }
 
@@ -389,8 +407,8 @@ public class BuildAST extends mxBaseVisitor<Object>{
     @Override
     public AssignExpr visitAssign(mxParser.AssignContext ctx) {
         AssignExpr ret = new AssignExpr();
-        ret.l = (LeftValueExpr)visit(ctx.leftValue());
-        ret.r = (Expr)visit(ctx.expression());
+        ret.l = (LeftValueExpr)visit(ctx.left);
+        ret.r = (Expr)visit(ctx.right);
         return ret;
     }
 
@@ -452,5 +470,10 @@ public class BuildAST extends mxBaseVisitor<Object>{
             }
         }
         return ret;
+    }
+
+    @Override
+    public EmptyState visitEmptyst(mxParser.EmptystContext ctx) {
+        return new EmptyState();
     }
 }

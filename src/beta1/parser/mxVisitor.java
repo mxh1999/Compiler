@@ -17,6 +17,27 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(mxParser.ProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code funcdef}
+	 * labeled alternative in {@link mxParser#definition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuncdef(mxParser.FuncdefContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code classdef}
+	 * labeled alternative in {@link mxParser#definition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassdef(mxParser.ClassdefContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code vardef}
+	 * labeled alternative in {@link mxParser#definition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVardef(mxParser.VardefContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link mxParser#classDefinition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -200,6 +221,13 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitContinuest(mxParser.ContinuestContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code emptyst}
+	 * labeled alternative in {@link mxParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEmptyst(mxParser.EmptystContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link mxParser#ifStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -273,6 +301,13 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrefix(mxParser.PrefixContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code leftValue}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLeftValue(mxParser.LeftValueContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code shift}
 	 * labeled alternative in {@link mxParser#expression}.
@@ -381,12 +416,6 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitUnknown(mxParser.UnknownContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link mxParser#leftValue}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLeftValue(mxParser.LeftValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link mxParser#expressionList}.
 	 * @param ctx the parse tree

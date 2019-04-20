@@ -31,9 +31,6 @@ public class BuildST implements ASTVisitor {
         for (ClassNode i : node.classlist) {
             visit(i);
         }
-        for (VariableNode i: node.variablelist) {
-            visit(i);
-        }
         for (FuncNode i : node.funclist) {
             visit(i);
         }
@@ -43,6 +40,7 @@ public class BuildST implements ASTVisitor {
     public void visit(ClassNode node) {
         global.addClass(node.name,node);
         node.st = new ClassST(local);
+        node.st.addVar("this",new ClassType(node.name));
         local = node.st;
         for (VariableNode i : node.member) {
             visit(i);
@@ -162,6 +160,11 @@ public class BuildST implements ASTVisitor {
 
     @Override
     public void visit(LeftValueExpr node) {
+
+    }
+
+    @Override
+    public void visit(EmptyState node) {
 
     }
 }

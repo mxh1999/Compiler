@@ -16,6 +16,7 @@ public interface ASTVisitor {
     void visit(BreakState node) throws Exception;
     void visit(ReturnState node) throws Exception;
     void visit(ContinueState node) throws Exception;
+    void visit(EmptyState node) throws Exception;
 
     void visit(BinaryExpr node) throws Exception;
     void visit(ConstExpr node) throws Exception;

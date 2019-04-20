@@ -1,6 +1,7 @@
 package beta1.SymbolTable;
 
 import beta1.AST.Type;
+import beta1.AST.VariableNode;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

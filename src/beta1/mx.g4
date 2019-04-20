@@ -1,8 +1,14 @@
 grammar mx;
 
 program
-	: (functionDefinition | classDefinition | variableDefinition)+
+	: (definition)+
 	;
+
+definition
+    : functionDefinition    #funcdef
+    | classDefinition       #classdef
+    | variableDefinition    #vardef
+    ;
 
 classDefinition
 	: CLASS className classBody
@@ -74,6 +80,7 @@ statement
 	| BREAK ';'				# breakst
 	| RETURN expression? ';'# returnst
 	| CONTINUE ';'			# continuest
+	| empty ';'             # emptyst
 	;
 
 ifStatement
@@ -89,8 +96,8 @@ forStatement
 	;
 
 expression
-	: constant									    	# const
-	| leftValue									    	# var
+	: unknown									    	# var
+	| expression '.' unknown                            # leftValue
 	| '(' expression ')'						    	# parentheses
 	| op=('--'|'++'|'-'|'!'|'~') expression		    	# prefix
 	| expression op=('--'|'++')					    	# suffix
@@ -104,8 +111,9 @@ expression
 	| A=expression '|' B=expression					   	# or
 	| A=expression '&&' B=expression				   	# and2
 	| A=expression '||' B=expression				   	# or2
-	| <assoc=right> leftValue '=' expression	    	# assign
+	| <assoc=right> left=expression '=' right=expression# assign
 	| malloc                                            # new
+	| constant									    	# const
 	;
 
 malloc
@@ -130,9 +138,6 @@ unknown
     : variable
     | function
     ;
-leftValue
-	:  unknown ('.' unknown)*
-	;
 
 expressionList
 	: expression (',' expression)*
