@@ -6,8 +6,6 @@ import java.util.List;
 public class LeftValueExpr extends Expr{
     public List<Expr> name; //varexpr | funcexpr
 
-    boolean isleft;
-
     public LeftValueExpr(){
         name = new LinkedList<>();
     }

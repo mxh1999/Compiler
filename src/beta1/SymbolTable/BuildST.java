@@ -16,7 +16,8 @@ public class BuildST implements ASTVisitor {
     }
 
     public void checkmain() throws Exception {
-
+        if (!global.haveFunc("main")) throw new Exception("no main");
+        if (!global.getFunc("main").returnvalue.ac(new BasicType("int"))) throw new Exception("main should be int");
     }
 
     private FuncSymbol ConstructionToST(FuncNode node) {
@@ -60,6 +61,7 @@ public class BuildST implements ASTVisitor {
 
     @Override
     public void visit(VariableNode node) throws Exception {
+        if (node.type.ac(new BasicType("void")) || node.type instanceof NullType) throw new Exception("Variable can't be void");
         local.addVar(node.name,node.type);
     }
 
@@ -74,6 +76,13 @@ public class BuildST implements ASTVisitor {
             ret.para.add(i.type);
         }
         local.addFunc(node.name,ret);
+        if (!node.returnvalue.ac(new BasicType("void"))) {
+            boolean have=false;
+            for (StateNode i : node.body.statement) {
+                if (i instanceof ReturnState) have=true;
+            }
+            if (!have) throw new Exception("no return value");
+        }
     }
 
     //============empty line==========================

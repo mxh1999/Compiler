@@ -181,6 +181,16 @@ public class BuildAST extends mxBaseVisitor<Object>{
         ret.isnot = (Expr)visit(ctx.ifStatement().expression());
         ret.istrue = (StateNode)visit(ctx.ifStatement().A);
         if (ctx.ifStatement().B != null) ret.isfalse = (StateNode)visit(ctx.ifStatement().B);else ret.isfalse = null;
+        if (!(ret.istrue instanceof BlockNode)) {
+            BlockNode tmp = new BlockNode();
+            tmp.add(ret.istrue);
+            ret.istrue = tmp;
+        }
+        if (!(ret.isfalse instanceof BlockNode)) {
+            BlockNode tmp = new BlockNode();
+            tmp.add(ret.isfalse);
+            ret.isfalse = tmp;
+        }
         return ret;
     }
 
@@ -189,6 +199,11 @@ public class BuildAST extends mxBaseVisitor<Object>{
         WhileState ret = new WhileState();
         ret.isnot = (Expr)visit(ctx.whileStatement().expression());
         ret.istrue = (StateNode)visit(ctx.whileStatement().statement());
+        if (!(ret.istrue instanceof BlockNode)) {
+            BlockNode tmp = new BlockNode();
+            tmp.add(ret.istrue);
+            ret.istrue = tmp;
+        }
         return ret;
     }
 
@@ -199,6 +214,11 @@ public class BuildAST extends mxBaseVisitor<Object>{
         if (ctx.forStatement().B != null) ret.isnot = (Expr)visit(ctx.forStatement().B);else ret.isnot = null;
         if (ctx.forStatement().C != null) ret.update = (Expr)visit(ctx.forStatement().C);else ret.update = null;
         ret.doit = (StateNode)visit(ctx.forStatement().statement());
+        if (!(ret.doit instanceof BlockNode)) {
+            BlockNode tmp = new BlockNode();
+            tmp.add(ret.doit);
+            ret.doit = tmp;
+        }
         return ret;
     }
 
