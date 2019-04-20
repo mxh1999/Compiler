@@ -2,10 +2,15 @@ package beta1.SymbolTable;
 
 import beta1.AST.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class CheckST implements ASTVisitor {
     public ProgramST global;
     public SymbolTable local;
     public SymbolTable arrayst;
+
+    private Set<String> reserved;
 
     private Funclist lastfunc;
     private Forlist lastfor;
@@ -16,6 +21,23 @@ public class CheckST implements ASTVisitor {
         lastfunc = null;
         lastfor = null;
         arrayst = tmp.arrayst;
+        reserved = new LinkedHashSet<>();
+        reserved.add("bool");
+        reserved.add("int");
+        reserved.add("string");
+        reserved.add("null");
+        reserved.add("void");
+        reserved.add("true");
+        reserved.add("false");
+        reserved.add("if");
+        reserved.add("for");
+        reserved.add("while");
+        reserved.add("break");
+        reserved.add("continue");
+        reserved.add("return");
+        reserved.add("new");
+        reserved.add("class");
+        reserved.add("this");
     }
 
     @Override
@@ -27,9 +49,11 @@ public class CheckST implements ASTVisitor {
 
     @Override
     public void visit(ClassNode node) throws Exception {
+        if (reserved.contains(node.name)) throw new Exception("reserved word can't be name");
         local = node.st;
         if (node.construction != null) {
             visit(node.construction);
+            if (!node.construction.name.equals(node.name)) throw new Exception("Construction name error");
         }
         for (FuncNode i:node.method) {
             visit(i);
@@ -46,6 +70,7 @@ public class CheckST implements ASTVisitor {
 
     @Override
     public void visit(FuncNode node) throws Exception {
+        if (reserved.contains(node.name)) throw new Exception("reserved word can't be name");
         lastfunc = new Funclist(lastfunc);
         lastfor = new Forlist(lastfor);
         lastfunc.now=node;
@@ -65,6 +90,7 @@ public class CheckST implements ASTVisitor {
 
     @Override
     public void visit(VariableNode node) throws Exception {
+        if (reserved.contains(node.name)) throw new Exception("reserved word can't be name");
         if (node.type.ac(new BasicType("void")) || node.type instanceof NullType) throw new Exception("Variable can't be void");
         if (node.init != null) {
             node.init.accept(this);
