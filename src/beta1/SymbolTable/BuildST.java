@@ -76,13 +76,6 @@ public class BuildST implements ASTVisitor {
             ret.para.add(i.type);
         }
         local.addFunc(node.name,ret);
-        if (!node.returnvalue.ac(new BasicType("void"))) {
-            boolean have=false;
-            for (StateNode i : node.body.statement) {
-                if (i instanceof ReturnState) have=true;
-            }
-            if (!have) throw new Exception("no return value");
-        }
     }
 
     //============empty line==========================
