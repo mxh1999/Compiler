@@ -340,7 +340,7 @@ public class CheckST implements ASTVisitor {
 
     @Override
     public void visit(MallocExpr node) throws Exception{
-        node.isleft = true;//?????
+        node.isleft = false;//?????
         for (Expr i:node.has) {
             i.accept(this);
             if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");

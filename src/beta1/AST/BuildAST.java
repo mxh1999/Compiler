@@ -180,16 +180,18 @@ public class BuildAST extends mxBaseVisitor<Object>{
         IfState ret = new IfState();
         ret.isnot = (Expr)visit(ctx.ifStatement().expression());
         ret.istrue = (StateNode)visit(ctx.ifStatement().A);
-        if (ctx.ifStatement().B != null) ret.isfalse = (StateNode)visit(ctx.ifStatement().B);else ret.isfalse = null;
+        if (ctx.ifStatement().B != null) {
+            ret.isfalse = (StateNode)visit(ctx.ifStatement().B);
+            if (!(ret.isfalse instanceof BlockNode)) {
+                BlockNode tmp = new BlockNode();
+                tmp.add(ret.isfalse);
+                ret.isfalse = tmp;
+            }
+        }   else ret.isfalse = null;
         if (!(ret.istrue instanceof BlockNode)) {
             BlockNode tmp = new BlockNode();
             tmp.add(ret.istrue);
             ret.istrue = tmp;
-        }
-        if (!(ret.isfalse instanceof BlockNode)) {
-            BlockNode tmp = new BlockNode();
-            tmp.add(ret.isfalse);
-            ret.isfalse = tmp;
         }
         return ret;
     }

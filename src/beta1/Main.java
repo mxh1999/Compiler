@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
         InputStream is;
         is =System.in;
-        //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\testcase\\testcase_170.txt");
+        //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\testcase\\testcase_73.txt");
         ANTLRInputStream input = new ANTLRInputStream(is);
         mxLexer lexer = new mxLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
