@@ -1,0 +1,122 @@
+package beta1.SymbolTable;
+
+import beta1.AST.*;
+
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class ProgramST extends SymbolTable {
+    Map<String, Type> type;
+    Map<String, ClassNode> classes;
+
+    private FuncSymbol StrLength() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("int");
+        ret.define = null;
+        ret.name = "length";
+        ret.para = new LinkedList<>();
+        return ret;
+    }
+    private FuncSymbol StrSubstring() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new ClassType("string");
+        ret.define = null;
+        ret.name = "substring";
+        ret.para = new LinkedList<>();
+        ret.para.add(new BasicType("int"));
+        ret.para.add(new BasicType("int"));
+        return ret;
+    }
+    private FuncSymbol StrParseInt() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("int");
+        ret.define = null;
+        ret.name = "parseInt";
+        ret.para = new LinkedList<>();
+        return ret;
+    }
+    private FuncSymbol StrOrd() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("int");
+        ret.define = null;
+        ret.name = "ord";
+        ret.para = new LinkedList<>();
+        ret.para.add(new BasicType("int"));
+        return ret;
+    }
+    private FuncSymbol ProgPrint() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("void");
+        ret.define = null;
+        ret.name = "print";
+        ret.para = new LinkedList<>();
+        ret.para.add(new ClassType("string"));
+        return ret;
+    }
+    private FuncSymbol ProgPrintln() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("void");
+        ret.define = null;
+        ret.name = "println";
+        ret.para = new LinkedList<>();
+        ret.para.add(new ClassType("string"));
+        return ret;
+    }
+    private FuncSymbol ProgGetString() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new ClassType("string");
+        ret.define = null;
+        ret.name = "getstring";
+        ret.para = new LinkedList<>();
+        return ret;
+    }
+    private FuncSymbol ProgGetInt() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new BasicType("int");
+        ret.define = null;
+        ret.name = "getInt";
+        ret.para = new LinkedList<>();
+        return ret;
+    }
+    private FuncSymbol ProgToString() {
+        FuncSymbol ret = new FuncSymbol();
+        ret.returnvalue = new ClassType("string");
+        ret.define = null;
+        ret.name = "toString";
+        ret.para = new LinkedList<>();
+        ret.para.add(new BasicType("int"));
+        return ret;
+    }
+    public ProgramST() {
+        super();
+        classes = new LinkedHashMap<>();
+        type  = new LinkedHashMap<>();
+        type.put("int", new BasicType("int"));
+        type.put("bool",new BasicType("bool"));
+        type.put("void",new BasicType("void"));
+        type.put("null",new NullType());
+        type.put("string",new ClassType("string"));
+        ClassNode str = new ClassNode();
+        str.st = new ClassST(this);
+        str.construction = null;
+        str.st.addFunc("length",StrLength());
+        str.st.addFunc("substring",StrSubstring());
+        str.st.addFunc("parseInt",StrParseInt());
+        str.st.addFunc("ord",StrOrd());
+        classes.put("string",str);
+        addFunc("print",ProgPrint());
+        addFunc("println",ProgPrintln());
+        addFunc("getString",ProgGetString());
+        addFunc("getInt",ProgGetInt());
+        addFunc("toString",ProgToString());
+        //todo
+    }
+    public void addClass(String name, ClassNode node) {
+        type.put(name,new ClassType(name));
+        classes.put(name,node);
+    }
+    public ClassNode findClass(String name) {
+        return classes.get(name);
+    }
+}
