@@ -204,7 +204,7 @@ public class CheckST implements ASTVisitor {
         if (!node.a.type.ac(new BasicType("int"))) throw new Exception("Type not match");
         if (!node.a.isleft) throw new Exception("RightValue can't have suffix operator");
         node.type = node.a.type;
-        node.isleft = node.a.isleft;
+        node.isleft = false;
     }
 
     @Override
@@ -250,7 +250,8 @@ public class CheckST implements ASTVisitor {
     @Override
     public void visit(MallocExpr node) throws Exception{
         node.isleft = false;//?????
-        if (!checkType(node.type)) throw new Exception("no such type");
+        if (!checkType(node.stype)) throw new Exception("no such type");
+        if (node.stype.ac(new BasicType("void")))   throw new Exception("void can't new");
         for (Expr i:node.has) {
             i.accept(this);
             if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");

@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
         InputStream is;
         is =System.in;
-        //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\testcase\\testcase_184.txt");
+        //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\testcase\\testcase_174.txt");
         ANTLRInputStream input = new ANTLRInputStream(is);
         mxLexer lexer = new mxLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -28,12 +28,11 @@ public class Main {
         parser.removeErrorListeners();
         mxErrorListener errorlistener = new mxErrorListener(error);
         parser.addErrorListener(errorlistener);
-
         ParseTree tree = parser.program();
+
         if (error.hasError()) {
             throw new Exception("antlr error");
         }
-
 
         BuildAST buildast = new BuildAST();
         buildast.visit(tree);
