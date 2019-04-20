@@ -98,7 +98,7 @@ public class ProgramST extends SymbolTable {
         ret.para.add(new BasicType("int"));
         return ret;
     }
-    public ProgramST() {
+    public ProgramST() throws Exception {
         super();
         classes = new LinkedHashMap<>();
         type  = new LinkedHashMap<>();
@@ -123,11 +123,24 @@ public class ProgramST extends SymbolTable {
         addFunc("toString",ProgToString());
         //todo
     }
-    public void addClass(String name, ClassNode node) {
+    public void addClass(String name, ClassNode node) throws Exception{
+        if (funcs.containsKey(name) || vars.containsKey(name) || classes.containsKey(name)) throw new Exception("the same name");
         type.put(name,new ClassType(name));
         classes.put(name,node);
     }
-    public ClassNode findClass(String name) {
+    public ClassNode findClass(String name) throws Exception{
+        if (!classes.containsKey(name)) throw new Exception("no such class");
         return classes.get(name);
+    }
+    public boolean haveClass(String name) {
+        return classes.containsKey(name);
+    }
+    public void addFunc(String name, FuncSymbol fun) throws Exception {
+        if (classes.containsKey(name)) throw new Exception("the same name");
+        super.addFunc(name,fun);
+    }
+    public void addVar(String name, Type type) throws Exception {
+        if (classes.containsKey(name)) throw new Exception("the same name");
+        super.addVar(name,type);
     }
 }

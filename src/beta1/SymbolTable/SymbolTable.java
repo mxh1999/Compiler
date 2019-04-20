@@ -22,16 +22,20 @@ public class SymbolTable {
         father = fa;
     }
 
-    public void addFunc(String name, FuncSymbol fun) {
+    public void addFunc(String name, FuncSymbol fun) throws Exception{
+        if (funcs.containsKey(name) || vars.containsKey(name)) throw new Exception("the same name");
         funcs.put(name,fun);
     }
-    public FuncSymbol getFunc(String name) {
+    public FuncSymbol getFunc(String name) throws Exception{
+        if (!funcs.containsKey(name)) throw new Exception("no such function");
         return funcs.get(name);
     }
-    public void addVar(String name, Type type) {
+    public void addVar(String name, Type type) throws Exception {
+        if (funcs.containsKey(name) || vars.containsKey(name)) throw new Exception("the same name");
         vars.put(name,type);
     }
-    public Type getVar(String name) {
+    public Type getVar(String name) throws Exception{
+        if (!vars.containsKey(name)) throw new Exception("no such variable");
         return vars.get(name);
     }
     public boolean haveVar(String name) {

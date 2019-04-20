@@ -9,10 +9,14 @@ public class BuildST implements ASTVisitor {
     public SymbolTable local;
     public ArrayST arrayst;
 
-    public BuildST() {
+    public BuildST() throws Exception {
         global = new ProgramST();
         local = global;
         arrayst = new ArrayST();
+    }
+
+    public void checkmain() throws Exception {
+
     }
 
     private FuncSymbol ConstructionToST(FuncNode node) {
@@ -27,7 +31,7 @@ public class BuildST implements ASTVisitor {
         return ret;
     }
     @Override
-    public void visit(ProgNode node) {
+    public void visit(ProgNode node) throws Exception {
         for (ClassNode i : node.classlist) {
             visit(i);
         }
@@ -37,12 +41,12 @@ public class BuildST implements ASTVisitor {
     }
 
     @Override
-    public void visit(ClassNode node) {
+    public void visit(ClassNode node) throws Exception {
         global.addClass(node.name,node);
         node.st = new ClassST(local);
         node.st.addVar("this",new ClassType(node.name));
         local = node.st;
-        for (VariableNode i : node.member) {
+        for (VariableNode i:node.member) {
             visit(i);
         }
         if (node.construction != null) {
@@ -55,12 +59,12 @@ public class BuildST implements ASTVisitor {
     }
 
     @Override
-    public void visit(VariableNode node) {
+    public void visit(VariableNode node) throws Exception {
         local.addVar(node.name,node.type);
     }
 
     @Override
-    public void visit(FuncNode node) {
+    public void visit(FuncNode node) throws Exception {
         FuncSymbol ret = new FuncSymbol();
         ret.name = node.name;
         ret.returnvalue = node.returnvalue;

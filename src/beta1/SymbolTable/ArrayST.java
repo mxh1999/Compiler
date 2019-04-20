@@ -6,7 +6,7 @@ import beta1.AST.Location;
 import java.util.LinkedList;
 
 public class ArrayST extends SymbolTable {
-    public ArrayST() {
+    public ArrayST() throws Exception {
         super();
         FuncSymbol siz =new FuncSymbol();
         siz.name = "size";

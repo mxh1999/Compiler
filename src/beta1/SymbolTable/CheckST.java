@@ -267,8 +267,7 @@ public class CheckST implements ASTVisitor {
             if (node.name.get(0) instanceof VarExpr) getGlobalVar((VarExpr)node.name.get(0));else getGlobalFunc((FuncExpr)node.name.get(0));
             node.type = node.name.get(0).type;
         }   else {
-            if (node.name.get(node.name.size()-1) instanceof VarExpr) visit((VarExpr)node.name.get(node.name.size()-1),now);else visit((FuncExpr)node.name );
-            node.name.get(node.name.size()-1).accept(this);
+            if (node.name.get(node.name.size()-1) instanceof VarExpr) visit((VarExpr)node.name.get(node.name.size()-1),now);else visit((FuncExpr)node.name.get(node.name.size()-1),now);
             node.type = node.name.get(node.name.size()-1).type;
         }
     }
