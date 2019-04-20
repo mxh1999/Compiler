@@ -4,7 +4,6 @@ import java.util.List;
 
 public class VarExpr extends Expr {
     public String name;
-    public List<Expr> index;
     @Override
     public void accept(ASTVisitor visitor) throws Exception{
         visitor.visit(this);

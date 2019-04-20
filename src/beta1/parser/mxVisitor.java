@@ -253,19 +253,19 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAdd(mxParser.AddContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code parentheses}
-	 * labeled alternative in {@link mxParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParentheses(mxParser.ParenthesesContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code new}
 	 * labeled alternative in {@link mxParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNew(mxParser.NewContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code parentheses}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParentheses(mxParser.ParenthesesContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code or}
 	 * labeled alternative in {@link mxParser#expression}.
@@ -281,6 +281,13 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConst(mxParser.ConstContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code method}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethod(mxParser.MethodContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code mul}
 	 * labeled alternative in {@link mxParser#expression}.
 	 * @param ctx the parse tree
@@ -295,6 +302,13 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVar(mxParser.VarContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code functioncall}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctioncall(mxParser.FunctioncallContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code prefix}
 	 * labeled alternative in {@link mxParser#expression}.
 	 * @param ctx the parse tree
@@ -302,19 +316,19 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrefix(mxParser.PrefixContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code leftValue}
-	 * labeled alternative in {@link mxParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLeftValue(mxParser.LeftValueContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code shift}
 	 * labeled alternative in {@link mxParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitShift(mxParser.ShiftContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code index}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndex(mxParser.IndexContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code suffix}
 	 * labeled alternative in {@link mxParser#expression}.
@@ -358,6 +372,13 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAnd2(mxParser.And2Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code member}
+	 * labeled alternative in {@link mxParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMember(mxParser.MemberContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code xor}
 	 * labeled alternative in {@link mxParser#expression}.
 	 * @param ctx the parse tree
@@ -399,23 +420,11 @@ public interface mxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNewvar(mxParser.NewvarContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link mxParser#variable}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariable(mxParser.VariableContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link mxParser#function}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunction(mxParser.FunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link mxParser#unknown}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUnknown(mxParser.UnknownContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link mxParser#expressionList}.
 	 * @param ctx the parse tree

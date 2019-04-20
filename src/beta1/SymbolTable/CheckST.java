@@ -37,6 +37,13 @@ public class CheckST implements ASTVisitor {
         local=local.father;
     }
 
+    public boolean checkType(Type type) {
+        if (type instanceof ClassType) {
+            return global.haveClass(((ClassType) type).name);
+        }
+        return true;
+    }
+
     @Override
     public void visit(FuncNode node) throws Exception {
         lastfunc = new Funclist(lastfunc);
@@ -45,6 +52,7 @@ public class CheckST implements ASTVisitor {
         if (node.body.st == null) {
             node.body.st = new SymbolTable(local);
         }
+        if (!checkType(node.returnvalue))   throw new Exception("no such type");
         local = node.body.st;
         for (VariableNode i:node.para) {
             visit(i);
@@ -62,6 +70,7 @@ public class CheckST implements ASTVisitor {
             node.init.accept(this);
             if (!node.type.ac(node.init.type))  throw new Exception("Type not match");
         }
+        if (!checkType(node.type)) throw new Exception("no such type");
         local.addVar(node.name,node.type);
     }
 
@@ -217,7 +226,8 @@ public class CheckST implements ASTVisitor {
         node.type=node.a.type;
     }
 
-    public void getGlobalVar(VarExpr node) throws Exception{
+    @Override
+    public void visit(VarExpr node) throws Exception{
         SymbolTable now = local;
         while (!now.haveVar(node.name)) {
             if (now.father == null) throw new Exception("no such variable");
@@ -225,112 +235,11 @@ public class CheckST implements ASTVisitor {
         }
         node.type = now.getVar(node.name);
         node.isleft = true;
-        if (!node.index.isEmpty()) {
-            if (!(node.type instanceof ArrayType))  throw new Exception("BasicType can't have index");
-            if (((ArrayType) node.type).dimension < node.index.size()) throw new Exception("Too many index");
-            for (Expr i:node.index) {
-                i.accept(this);
-                if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");
-            }
-            node.type = new ArrayType((ArrayType)node.type);
-            ((ArrayType) node.type).dimension -= node.index.size();
-            if (((ArrayType) node.type).dimension == 0) {
-                node.type = ((ArrayType) node.type).base;
-            }
-        }
-    }
-
-    public void getGlobalFunc(FuncExpr node) throws Exception{
-        SymbolTable now = local;
-        node.isleft =false;
-        while (!now.haveFunc(node.name)) {
-            if (now.father == null) throw new Exception("no such function");
-            now = now.father;
-        }
-        FuncSymbol ret= now.getFunc(node.name);
-        if (ret.para.size() != node.para.size()) throw new Exception("parameter number error");
-        for (int i=0;i<node.para.size();i++) {
-            node.para.get(i).accept(this);
-            if (!ret.para.get(i).ac(node.para.get(i).type)) throw new Exception("parameter type error");
-        }
-        node.type=ret.returnvalue;
-    }
-
-    @Override
-    public void visit(LeftValueExpr node) throws Exception{
-        if (node.name.isEmpty()) throw new Exception("no variable name");
-        SymbolTable now = local;
-        node.isleft =true;
-        for (int i=0;i<node.name.size()-1;i++) {
-            if (i>0){
-                if (node.name.get(i) instanceof VarExpr) {
-                    visit((VarExpr)node.name.get(i),now);
-                } else {
-                    visit((FuncExpr)node.name.get(i),now);
-                }
-            }else {
-                if (node.name.get(i) instanceof VarExpr) getGlobalVar((VarExpr)node.name.get(i));else getGlobalFunc((FuncExpr)node.name.get(i));
-            }
-            node.isleft &= node.name.get(i).isleft;
-            Type tp = node.name.get(i).type;
-            if (tp instanceof ArrayType) {
-                now = arrayst;
-            }   else {
-                if (!(tp instanceof ClassType)) throw new Exception("No such member");
-                now = global.findClass(((ClassType) tp).name).st;
-            }
-        }
-        if (node.name.size()==1) {
-            if (node.name.get(0) instanceof VarExpr) getGlobalVar((VarExpr)node.name.get(0));else getGlobalFunc((FuncExpr)node.name.get(0));
-            node.type = node.name.get(0).type;
-            node.isleft &= node.name.get(0).isleft;
-        }   else {
-            if (node.name.get(node.name.size()-1) instanceof VarExpr) visit((VarExpr)node.name.get(node.name.size()-1),now);else visit((FuncExpr)node.name.get(node.name.size()-1),now);
-            node.type = node.name.get(node.name.size()-1).type;
-            node.isleft &= node.name.get(node.name.size()-1).isleft;
-        }
-    }
-
-    public void visit(VarExpr node,SymbolTable now) throws Exception{
-        node.type = now.getVar(node.name);
-        node.isleft = true;
-        if (!node.index.isEmpty()) {
-            if (!(node.type instanceof ArrayType))  throw new Exception("BasicType can't have index");
-            if (((ArrayType) node.type).dimension < node.index.size()) throw new Exception("Too many index");
-            for (Expr i:node.index) {
-                i.accept(this);
-                if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");
-            }
-            node.type = new ArrayType((ArrayType)node.type);
-            ((ArrayType) node.type).dimension -= node.index.size();
-            if (((ArrayType) node.type).dimension == 0) {
-                node.type = ((ArrayType) node.type).base;
-            }
-        }
-    }
-
-    @Override
-    public void visit(VarExpr node) throws Exception{
-        node.type = local.getVar(node.name);
-        node.isleft = true;
-        if (!node.index.isEmpty()) {
-            if (!(node.type instanceof ArrayType))  throw new Exception("BasicType can't have index");
-            if (((ArrayType) node.type).dimension < node.index.size()) throw new Exception("Too many index");
-            for (Expr i:node.index) {
-                i.accept(this);
-                if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");
-            }
-            node.type = new ArrayType((ArrayType)node.type);
-            ((ArrayType) node.type).dimension -= node.index.size();
-            if (((ArrayType) node.type).dimension == 0) {
-                node.type = ((ArrayType) node.type).base;
-            }
-        }
     }
 
     @Override
     public void visit(AssignExpr node) throws Exception{
-        visit(node.l);
+        node.l.accept(this);
         if (!node.l.isleft) throw new Exception("RightValue cannot assign");
         node.r.accept(this);
         if (!node.l.type.ac(node.r.type)) throw new Exception("Type not match");
@@ -341,6 +250,7 @@ public class CheckST implements ASTVisitor {
     @Override
     public void visit(MallocExpr node) throws Exception{
         node.isleft = false;//?????
+        if (!checkType(node.type)) throw new Exception("no such type");
         for (Expr i:node.has) {
             i.accept(this);
             if (!i.type.ac(new BasicType("int"))) throw new Exception("Index should be a int");
@@ -352,24 +262,15 @@ public class CheckST implements ASTVisitor {
         }
     }
 
-    public void visit(FuncExpr node,SymbolTable now) throws Exception{
-        node.isleft = false;
-        FuncSymbol ret= now.getFunc(node.name);
-        for (Expr i:node.para) {
-            i.accept(this);
-        }
-        if (ret.para.size() != node.para.size()) throw new Exception("parameter number error");
-        for (int i=0;i<node.para.size();i++) {
-            node.para.get(i).accept(this);
-            if (!ret.para.get(i).ac(node.para.get(i).type)) throw new Exception("parameter type error");
-        }
-        node.type = ret.returnvalue;
-    }
-
     @Override
     public void visit(FuncExpr node) throws Exception{
         node.isleft = false;
-        FuncSymbol ret= local.getFunc(node.name);
+        SymbolTable now = local;
+        while (!now.haveFunc(node.name)) {
+            if (now.father == null) throw new Exception("no such function");
+            now = now.father;
+        }
+        FuncSymbol ret= now.getFunc(node.name);
         for (Expr i:node.para) {
             i.accept(this);
         }
@@ -384,5 +285,47 @@ public class CheckST implements ASTVisitor {
     @Override
     public void visit(EmptyState node) throws Exception {
 
+    }
+
+    @Override
+    public void visit(IndexExpr node) throws Exception {
+        node.left.accept(this);
+        node.index.accept(this);
+        if (!(node.left.type instanceof ArrayType)) throw new Exception("Can't have index");
+        if (!node.index.type.ac(new BasicType("int"))) throw new Exception("Index shoule be a int");
+        node.type = new ArrayType((ArrayType)node.left.type);
+        ((ArrayType) node.type).dimension--;
+        if (((ArrayType) node.type).dimension==0) node.type = ((ArrayType) node.type).base;
+        node.isleft = node.left.isleft;
+    }
+
+    @Override
+    public void visit(MemberExpr node) throws Exception {
+        node.left.accept(this);
+        if (!(node.left.type instanceof ClassType)) throw new Exception("no such member");
+        SymbolTable now = global.getClass(((ClassType) node.left.type).name).st;
+        node.type = now.getVar(node.name);
+        node.isleft = node.left.isleft;
+    }
+
+    @Override
+    public void visit(MethodExpr node) throws Exception {
+        node.left.accept(this);
+        SymbolTable now;
+        if (node.left.type instanceof ArrayType) now = arrayst; else {
+            if (!(node.left.type instanceof ClassType)) throw new Exception("no such method");
+            now = global.getClass(((ClassType) node.left.type).name).st;
+        }
+        FuncSymbol ret = now.getFunc(node.name);
+        node.type = ret.returnvalue;
+        node.isleft = false;
+        for (Expr i:node.para) {
+            i.accept(this);
+        }
+        if (ret.para.size() != node.para.size()) throw new Exception("parameter number error");
+        for (int i=0;i<node.para.size();i++) {
+            node.para.get(i).accept(this);
+            if (!ret.para.get(i).ac(node.para.get(i).type)) throw new Exception("parameter type error");
+        }
     }
 }

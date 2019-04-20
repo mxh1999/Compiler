@@ -165,12 +165,22 @@ public class BuildST implements ASTVisitor {
     }
 
     @Override
-    public void visit(LeftValueExpr node) {
+    public void visit(EmptyState node) {
 
     }
 
     @Override
-    public void visit(EmptyState node) {
+    public void visit(IndexExpr node) {
+
+    }
+
+    @Override
+    public void visit(MemberExpr node) {
+
+    }
+
+    @Override
+    public void visit(MethodExpr node) {
 
     }
 }

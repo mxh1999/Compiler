@@ -22,9 +22,11 @@ public interface ASTVisitor {
     void visit(ConstExpr node) throws Exception;
     void visit(FuncExpr node) throws Exception;
     void visit(VarExpr node) throws Exception;
-    void visit(LeftValueExpr node) throws Exception;
     void visit(PreExpr node) throws Exception;
     void visit(SufExpr node) throws Exception;
     void visit(AssignExpr node) throws Exception;
     void visit(MallocExpr node) throws Exception;
+    void visit(MemberExpr node) throws Exception;
+    void visit(MethodExpr node) throws Exception;
+    void visit(IndexExpr node) throws Exception;
 }

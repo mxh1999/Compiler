@@ -14,7 +14,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("int");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "length";
         ret.para = new LinkedList<>();
         return ret;
@@ -23,8 +22,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new ClassType("string");
         ret.define = null;
-        ret.pos = new Location(0,0);
-        ret.pos = new Location(0,0);
         ret.name = "substring";
         ret.para = new LinkedList<>();
         ret.para.add(new BasicType("int"));
@@ -35,7 +32,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("int");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "parseInt";
         ret.para = new LinkedList<>();
         return ret;
@@ -44,7 +40,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("int");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "ord";
         ret.para = new LinkedList<>();
         ret.para.add(new BasicType("int"));
@@ -54,7 +49,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("void");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "print";
         ret.para = new LinkedList<>();
         ret.para.add(new ClassType("string"));
@@ -64,7 +58,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("void");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "println";
         ret.para = new LinkedList<>();
         ret.para.add(new ClassType("string"));
@@ -74,7 +67,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new ClassType("string");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "getstring";
         ret.para = new LinkedList<>();
         return ret;
@@ -83,7 +75,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new BasicType("int");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "getInt";
         ret.para = new LinkedList<>();
         return ret;
@@ -92,7 +83,6 @@ public class ProgramST extends SymbolTable {
         FuncSymbol ret = new FuncSymbol();
         ret.returnvalue = new ClassType("string");
         ret.define = null;
-        ret.pos = new Location(0,0);
         ret.name = "toString";
         ret.para = new LinkedList<>();
         ret.para.add(new BasicType("int"));
@@ -128,7 +118,7 @@ public class ProgramST extends SymbolTable {
         type.put(name,new ClassType(name));
         classes.put(name,node);
     }
-    public ClassNode findClass(String name) throws Exception{
+    public ClassNode getClass(String name) throws Exception{
         if (!classes.containsKey(name)) throw new Exception("no such class");
         return classes.get(name);
     }

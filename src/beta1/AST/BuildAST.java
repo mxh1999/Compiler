@@ -287,31 +287,9 @@ public class BuildAST extends mxBaseVisitor<Object>{
     }
 
     @Override
-    public LeftValueExpr visitVar(mxParser.VarContext ctx) {
-        LeftValueExpr ret = new LeftValueExpr();
-        ret.add((Expr)visit(ctx.unknown()));
-        return ret;
-    }
-
-    @Override
-    public LeftValueExpr visitLeftValue(mxParser.LeftValueContext ctx) {
-        LeftValueExpr ret = new LeftValueExpr();
-        Expr tmp = (Expr)visit(ctx.expression());
-        if (tmp instanceof LeftValueExpr) {
-            ret = (LeftValueExpr)tmp;
-        }   else ret.add(tmp);
-        ret.add((Expr)visit(ctx.unknown()));
-        return ret;
-    }
-
-    @Override
-    public VarExpr visitVariable(mxParser.VariableContext ctx) {
+    public VarExpr visitVar(mxParser.VarContext ctx) {
         VarExpr ret = new VarExpr();
         ret.name = ctx.variableName().getText();
-        ret.index = new LinkedList<>();
-        for (mxParser.ExpressionContext i : ctx.expression()) {
-            ret.index.add((Expr)visit(i));
-        }
         return ret;
     }
 
@@ -429,7 +407,7 @@ public class BuildAST extends mxBaseVisitor<Object>{
     @Override
     public AssignExpr visitAssign(mxParser.AssignContext ctx) {
         AssignExpr ret = new AssignExpr();
-        ret.l = (LeftValueExpr)visit(ctx.left);
+        ret.l = (Expr)visit(ctx.left);
         ret.r = (Expr)visit(ctx.right);
         return ret;
     }
@@ -475,13 +453,6 @@ public class BuildAST extends mxBaseVisitor<Object>{
     }
 
     @Override
-    public Expr visitUnknown(mxParser.UnknownContext ctx) {
-        if (ctx.variable()!=null)   return visitVariable(ctx.variable());
-        if (ctx.function() != null) return visitFunction(ctx.function());
-        return null;
-    }
-
-    @Override
     public FuncExpr visitFunction(mxParser.FunctionContext ctx) {
         FuncExpr ret = new FuncExpr();
         ret.name = ctx.variableName().getText();
@@ -497,5 +468,36 @@ public class BuildAST extends mxBaseVisitor<Object>{
     @Override
     public EmptyState visitEmptyst(mxParser.EmptystContext ctx) {
         return new EmptyState();
+    }
+
+    @Override
+    public FuncExpr visitFunctioncall(mxParser.FunctioncallContext ctx) {
+        return (FuncExpr)visit(ctx.function());
+    }
+
+    @Override
+    public MemberExpr visitMember(mxParser.MemberContext ctx) {
+        MemberExpr ret = new MemberExpr();
+        ret.left = (Expr)visit(ctx.expression());
+        ret.name = ctx.variableName().getText();
+        return ret;
+    }
+
+    @Override
+    public MethodExpr visitMethod(mxParser.MethodContext ctx) {
+        MethodExpr ret = new MethodExpr();
+        ret.left = (Expr)visit(ctx.expression());
+        FuncExpr tmp = (FuncExpr)visit(ctx.function());
+        ret.name = tmp.name;
+        ret.para = tmp.para;
+        return ret;
+    }
+
+    @Override
+    public IndexExpr visitIndex(mxParser.IndexContext ctx) {
+        IndexExpr ret = new IndexExpr();
+        ret.left = (Expr)visit(ctx.A);
+        ret.index = (Expr)visit(ctx.B);
+        return ret;
     }
 }

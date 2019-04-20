@@ -96,9 +96,12 @@ forStatement
 	;
 
 expression
-	: unknown									    	# var
-	| expression '.' unknown                            # leftValue
-	| '(' expression ')'						    	# parentheses
+	: variableName								    	# var
+	| function                                          # functioncall
+	| expression '.' variableName                       # member
+	| expression '.' function                           # method
+	| A=expression '[' B=expression ']'                 # index
+	| malloc                                            # new
 	| op=('--'|'++'|'-'|'!'|'~') expression		    	# prefix
 	| expression op=('--'|'++')					    	# suffix
 	| A=expression op=('*'|'/'|'%') B=expression	    # mul
@@ -112,7 +115,7 @@ expression
 	| A=expression '&&' B=expression				   	# and2
 	| A=expression '||' B=expression				   	# or2
 	| <assoc=right> left=expression '=' right=expression# assign
-	| malloc                                            # new
+	| '(' pre=expression ')'                    	    # parentheses
 	| constant									    	# const
 	;
 
@@ -126,17 +129,8 @@ creator
     | basicType                                     # newvar
     ;
 
-variable
-	: variableName ('[' expression ']')*
-	;
-
 function
     : variableName '(' expressionList? ')'
-    ;
-
-unknown
-    : variable
-    | function
     ;
 
 expressionList
