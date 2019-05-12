@@ -96,12 +96,12 @@ public class preFuncTranslator {
                 "        mov     rax, qword [fs:abs 28H]\n" +
                 "        mov     qword [rbp-8H], rax\n" +
                 "        xor     eax, eax\n" +
-                "        lea     rax, [rbp-0CH]\n" +
+                "        lea     rax, [rbp-10H]\n" +
                 "        mov     rsi, rax\n" +
                 "        lea     rdi, [rel L_018]\n" +
                 "        mov     eax, 0\n" +
                 "        call    __isoc99_scanf\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
+                "        mov     rax, qword [rbp-10H]\n" +
                 "        mov     rdx, qword [rbp-8H]\n" +
                 "\n" +
                 "\n" +
@@ -116,93 +116,90 @@ public class preFuncTranslator {
                 "        push    rbp\n" +
                 "        mov     rbp, rsp\n" +
                 "        sub     rsp, 48\n" +
-                "        mov     dword [rbp-24H], edi\n" +
-                "        mov     eax, dword [rbp-24H]\n" +
-                "        mov     dword [rbp-14H], eax\n" +
-                "        mov     dword [rbp-10H], 0\n" +
-                "        cmp     dword [rbp-14H], 0\n" +
+                "        mov     qword [rbp-28H], rdi\n" +
+                "        mov     rax, qword [rbp-28H]\n" +
+                "        mov     qword [rbp-20H], rax\n" +
+                "        mov     qword [rbp-18H], 0\n" +
+                "        cmp     qword [rbp-20H], 0\n" +
                 "        jns     L_002\n" +
-                "        add     dword [rbp-10H], 1\n" +
-                "        neg     dword [rbp-14H]\n" +
-                "L_002:  cmp     dword [rbp-14H], 0\n" +
+                "        add     qword [rbp-18H], 1\n" +
+                "        neg     qword [rbp-20H]\n" +
+                "L_002:  cmp     qword [rbp-20H], 0\n" +
                 "        jnz     L_004\n" +
-                "        add     dword [rbp-10H], 1\n" +
+                "        add     qword [rbp-18H], 1\n" +
                 "        jmp     L_004\n" +
                 "\n" +
-                "L_003:  add     dword [rbp-10H], 1\n" +
-                "        mov     ecx, dword [rbp-14H]\n" +
-                "        mov     edx, 1717986919\n" +
-                "        mov     eax, ecx\n" +
-                "        imul    edx\n" +
-                "        sar     edx, 2\n" +
-                "        mov     eax, ecx\n" +
-                "        sar     eax, 31\n" +
-                "        sub     edx, eax\n" +
-                "        mov     eax, edx\n" +
-                "        mov     dword [rbp-14H], eax\n" +
-                "L_004:  cmp     dword [rbp-14H], 0\n" +
+                "L_003:  add     qword [rbp-18H], 1\n" +
+                "        mov     rcx, qword [rbp-20H]\n" +
+                "        mov     rdx, qword 6666666666666667H\n" +
+                "        mov     rax, rcx\n" +
+                "        imul    rdx\n" +
+                "        sar     rdx, 2\n" +
+                "        mov     rax, rcx\n" +
+                "        sar     rax, 63\n" +
+                "        sub     rdx, rax\n" +
+                "        mov     rax, rdx\n" +
+                "        mov     qword [rbp-20H], rax\n" +
+                "L_004:  cmp     qword [rbp-20H], 0\n" +
                 "        jnz     L_003\n" +
-                "        mov     eax, dword [rbp-10H]\n" +
-                "        add     eax, 1\n" +
-                "        cdqe\n" +
+                "        mov     rax, qword [rbp-18H]\n" +
+                "        add     rax, 1\n" +
                 "        mov     rdi, rax\n" +
                 "        call    malloc\n" +
                 "        mov     qword [rbp-8H], rax\n" +
-                "        mov     eax, dword [rbp-10H]\n" +
-                "        movsxd  rdx, eax\n" +
+                "        mov     rdx, qword [rbp-18H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rax, rdx\n" +
                 "        mov     byte [rax], 0\n" +
-                "        cmp     dword [rbp-24H], 0\n" +
+                "        cmp     qword [rbp-28H], 0\n" +
                 "        jns     L_005\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        mov     byte [rax], 45\n" +
-                "        neg     dword [rbp-24H]\n" +
-                "L_005:  cmp     dword [rbp-24H], 0\n" +
+                "        neg     qword [rbp-28H]\n" +
+                "L_005:  cmp     qword [rbp-28H], 0\n" +
                 "        jnz     L_006\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        mov     byte [rax], 48\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        jmp     L_011\n" +
                 "\n" +
-                "L_006:  mov     eax, dword [rbp-10H]\n" +
-                "        sub     eax, 1\n" +
-                "        mov     dword [rbp-0CH], eax\n" +
+                "L_006:  mov     rax, qword [rbp-18H]\n" +
+                "        sub     rax, 1\n" +
+                "        mov     qword [rbp-10H], rax\n" +
                 "        jmp     L_008\n" +
                 "\n" +
-                "L_007:  mov     ecx, dword [rbp-24H]\n" +
-                "        mov     edx, 1717986919\n" +
-                "        mov     eax, ecx\n" +
-                "        imul    edx\n" +
-                "        sar     edx, 2\n" +
-                "        mov     eax, ecx\n" +
-                "        sar     eax, 31\n" +
-                "        sub     edx, eax\n" +
-                "        mov     eax, edx\n" +
-                "        shl     eax, 2\n" +
-                "        add     eax, edx\n" +
-                "        add     eax, eax\n" +
-                "        sub     ecx, eax\n" +
-                "        mov     edx, ecx\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        movsxd  rcx, eax\n" +
+                "L_007:  mov     rcx, qword [rbp-28H]\n" +
+                "        mov     rdx, qword 6666666666666667H\n" +
+                "        mov     rax, rcx\n" +
+                "        imul    rdx\n" +
+                "        sar     rdx, 2\n" +
+                "        mov     rax, rcx\n" +
+                "        sar     rax, 63\n" +
+                "        sub     rdx, rax\n" +
+                "        mov     rax, rdx\n" +
+                "        shl     rax, 2\n" +
+                "        add     rax, rdx\n" +
+                "        add     rax, rax\n" +
+                "        sub     rcx, rax\n" +
+                "        mov     rdx, rcx\n" +
+                "        mov     rcx, qword [rbp-10H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rax, rcx\n" +
                 "        mov     byte [rax], dl\n" +
-                "        mov     ecx, dword [rbp-24H]\n" +
-                "        mov     edx, 1717986919\n" +
-                "        mov     eax, ecx\n" +
-                "        imul    edx\n" +
-                "        sar     edx, 2\n" +
-                "        mov     eax, ecx\n" +
-                "        sar     eax, 31\n" +
-                "        sub     edx, eax\n" +
-                "        mov     eax, edx\n" +
-                "        mov     dword [rbp-24H], eax\n" +
-                "        cmp     dword [rbp-24H], 0\n" +
+                "        mov     rcx, qword [rbp-28H]\n" +
+                "        mov     rdx, qword 6666666666666667H\n" +
+                "        mov     rax, rcx\n" +
+                "        imul    rdx\n" +
+                "        sar     rdx, 2\n" +
+                "        mov     rax, rcx\n" +
+                "        sar     rax, 63\n" +
+                "        sub     rdx, rax\n" +
+                "        mov     rax, rdx\n" +
+                "        mov     qword [rbp-28H], rax\n" +
+                "        cmp     qword [rbp-28H], 0\n" +
                 "        jz      L_009\n" +
-                "        sub     dword [rbp-0CH], 1\n" +
-                "L_008:  cmp     dword [rbp-0CH], 0\n" +
+                "        sub     qword [rbp-10H], 1\n" +
+                "L_008:  cmp     qword [rbp-10H], 0\n" +
                 "        jns     L_007\n" +
                 "        jmp     L_010\n" +
                 "\n" +
@@ -227,43 +224,40 @@ public class preFuncTranslator {
                 "_string_substring_func:\n" +
                 "        push    rbp\n" +
                 "        mov     rbp, rsp\n" +
-                "        sub     rsp, 32\n" +
-                "        mov     qword [rbp-18H], rdi\n" +
-                "        mov     dword [rbp-1CH], esi\n" +
-                "        mov     dword [rbp-20H], edx\n" +
-                "        mov     eax, dword [rbp-20H]\n" +
-                "        sub     eax, dword [rbp-1CH]\n" +
-                "        add     eax, 2\n" +
-                "        mov     dword [rbp-0CH], eax\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        cdqe\n" +
+                "        sub     rsp, 64\n" +
+                "        mov     qword [rbp-28H], rdi\n" +
+                "        mov     qword [rbp-30H], rsi\n" +
+                "        mov     qword [rbp-38H], rdx\n" +
+                "        mov     rax, qword [rbp-38H]\n" +
+                "        sub     rax, qword [rbp-30H]\n" +
+                "        add     rax, 2\n" +
+                "        mov     qword [rbp-10H], rax\n" +
+                "        mov     rax, qword [rbp-10H]\n" +
                 "        mov     rdi, rax\n" +
                 "        call    malloc\n" +
                 "        mov     qword [rbp-8H], rax\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        cdqe\n" +
+                "        mov     rax, qword [rbp-10H]\n" +
                 "        lea     rdx, [rax-1H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rax, rdx\n" +
                 "        mov     byte [rax], 0\n" +
-                "        mov     eax, dword [rbp-1CH]\n" +
-                "        mov     dword [rbp-10H], eax\n" +
+                "        mov     rax, qword [rbp-30H]\n" +
+                "        mov     qword [rbp-18H], rax\n" +
                 "        jmp     L_013\n" +
                 "\n" +
-                "L_012:  mov     eax, dword [rbp-10H]\n" +
-                "        movsxd  rdx, eax\n" +
-                "        mov     rax, qword [rbp-18H]\n" +
+                "L_012:  mov     rdx, qword [rbp-18H]\n" +
+                "        mov     rax, qword [rbp-28H]\n" +
                 "        lea     rcx, [rdx+rax]\n" +
-                "        mov     eax, dword [rbp-10H]\n" +
-                "        sub     eax, dword [rbp-1CH]\n" +
-                "        movsxd  rdx, eax\n" +
+                "        mov     rax, qword [rbp-18H]\n" +
+                "        sub     rax, qword [rbp-30H]\n" +
+                "        mov     rdx, rax\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rdx, rax\n" +
                 "        movzx   eax, byte [rcx]\n" +
                 "        mov     byte [rdx], al\n" +
-                "        add     dword [rbp-10H], 1\n" +
-                "L_013:  mov     eax, dword [rbp-10H]\n" +
-                "        cmp     eax, dword [rbp-20H]\n" +
+                "        add     qword [rbp-18H], 1\n" +
+                "L_013:  mov     rax, qword [rbp-18H]\n" +
+                "        cmp     rax, qword [rbp-38H]\n" +
                 "        jle     L_012\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        leave\n" +
@@ -274,23 +268,23 @@ public class preFuncTranslator {
                 "        push    rbp\n" +
                 "        mov     rbp, rsp\n" +
                 "        mov     qword [rbp-18H], rdi\n" +
-                "        mov     dword [rbp-0CH], 0\n" +
+                "        mov     qword [rbp-10H], 0\n" +
                 "        mov     rax, qword [rbp-18H]\n" +
                 "        mov     qword [rbp-8H], rax\n" +
                 "        jmp     L_015\n" +
                 "\n" +
-                "L_014:  mov     edx, dword [rbp-0CH]\n" +
-                "        mov     eax, edx\n" +
-                "        shl     eax, 2\n" +
-                "        add     eax, edx\n" +
-                "        add     eax, eax\n" +
-                "        mov     edx, eax\n" +
+                "L_014:  mov     rdx, qword [rbp-10H]\n" +
+                "        mov     rax, rdx\n" +
+                "        shl     rax, 2\n" +
+                "        add     rax, rdx\n" +
+                "        add     rax, rax\n" +
+                "        mov     rdx, rax\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        movzx   eax, byte [rax]\n" +
-                "        movsx   eax, al\n" +
-                "        add     eax, edx\n" +
-                "        sub     eax, 48\n" +
-                "        mov     dword [rbp-0CH], eax\n" +
+                "        movsx   rax, al\n" +
+                "        add     rax, rdx\n" +
+                "        sub     rax, 48\n" +
+                "        mov     qword [rbp-10H], rax\n" +
                 "        add     qword [rbp-8H], 1\n" +
                 "L_015:  mov     rax, qword [rbp-8H]\n" +
                 "        movzx   eax, byte [rax]\n" +
@@ -300,7 +294,7 @@ public class preFuncTranslator {
                 "        movzx   eax, byte [rax]\n" +
                 "        cmp     al, 47\n" +
                 "        jg      L_014\n" +
-                "L_016:  mov     eax, dword [rbp-0CH]\n" +
+                "L_016:  mov     rax, qword [rbp-10H]\n" +
                 "        pop     rbp\n" +
                 "        ret\n" +
                 "\n" +
@@ -309,13 +303,12 @@ public class preFuncTranslator {
                 "        push    rbp\n" +
                 "        mov     rbp, rsp\n" +
                 "        mov     qword [rbp-8H], rdi\n" +
-                "        mov     dword [rbp-0CH], esi\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        movsxd  rdx, eax\n" +
+                "        mov     qword [rbp-10H], rsi\n" +
+                "        mov     rdx, qword [rbp-10H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rax, rdx\n" +
                 "        movzx   eax, byte [rax]\n" +
-                "        movsx   eax, al\n" +
+                "        movsx   rax, al\n" +
                 "        pop     rbp\n" +
                 "        ret\n" +
                 "\n" +
@@ -323,42 +316,40 @@ public class preFuncTranslator {
                 "_string_add_func:\n" +
                 "        push    rbp\n" +
                 "        mov     rbp, rsp\n" +
-                "        sub     rsp, 32\n" +
-                "        mov     qword [rbp-18H], rdi\n" +
-                "        mov     qword [rbp-20H], rsi\n" +
-                "        mov     rax, qword [rbp-18H]\n" +
+                "        sub     rsp, 48\n" +
+                "        mov     qword [rbp-28H], rdi\n" +
+                "        mov     qword [rbp-30H], rsi\n" +
+                "        mov     rax, qword [rbp-28H]\n" +
                 "        mov     rdi, rax\n" +
                 "        call    strlen\n" +
-                "        mov     dword [rbp-10H], eax\n" +
-                "        mov     rax, qword [rbp-20H]\n" +
+                "        mov     qword [rbp-18H], rax\n" +
+                "        mov     rax, qword [rbp-30H]\n" +
                 "        mov     rdi, rax\n" +
                 "        call    strlen\n" +
-                "        mov     dword [rbp-0CH], eax\n" +
-                "        mov     edx, dword [rbp-10H]\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        add     eax, edx\n" +
-                "        add     eax, 1\n" +
-                "        cdqe\n" +
+                "        mov     qword [rbp-10H], rax\n" +
+                "        mov     rdx, qword [rbp-18H]\n" +
+                "        mov     rax, qword [rbp-10H]\n" +
+                "        add     rax, rdx\n" +
+                "        add     rax, 1\n" +
                 "        mov     rdi, rax\n" +
                 "        call    malloc\n" +
                 "        mov     qword [rbp-8H], rax\n" +
-                "        mov     rdx, qword [rbp-18H]\n" +
+                "        mov     rdx, qword [rbp-28H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        mov     rsi, rdx\n" +
                 "        mov     rdi, rax\n" +
                 "        call    strcpy\n" +
-                "        mov     eax, dword [rbp-10H]\n" +
-                "        movsxd  rdx, eax\n" +
+                "        mov     rdx, qword [rbp-18H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rdx, rax\n" +
-                "        mov     rax, qword [rbp-20H]\n" +
+                "        mov     rax, qword [rbp-30H]\n" +
                 "        mov     rsi, rax\n" +
                 "        mov     rdi, rdx\n" +
                 "        call    strcpy\n" +
-                "        mov     edx, dword [rbp-10H]\n" +
-                "        mov     eax, dword [rbp-0CH]\n" +
-                "        add     eax, edx\n" +
-                "        movsxd  rdx, eax\n" +
+                "        mov     rdx, qword [rbp-18H]\n" +
+                "        mov     rax, qword [rbp-10H]\n" +
+                "        add     rax, rdx\n" +
+                "        mov     rdx, rax\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
                 "        add     rax, rdx\n" +
                 "        mov     byte [rax], 0\n" +
@@ -481,7 +472,7 @@ public class preFuncTranslator {
                 "        db 25H, 73H, 00H\n" +
                 "\n" +
                 "L_018:\n" +
-                "        db 25H, 64H, 00H\n" +
+                "        db 25H, 6CH, 64H, 00H\n" +
                 "\n" +
                 "\n");
     }

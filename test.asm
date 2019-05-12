@@ -500,69 +500,6 @@ Lab_1:
           mov       [r11], r10
           mov       r10, qword [rbp-24]
           mov       qword [@a_var], r10
-          call      main_func
-          leave     
-          ret       
-
-main_func:
-          push      rbp
-          mov       rbp, rsp
-          sub       rsp, 120
-Lab_2:
-          mov       r10, 4
-          imul      r10, 8
-          mov       qword [rbp-16], r10
-          mov       r10, qword [rbp-16]
-          add       r10, 8
-          mov       qword [rbp-24], r10
-          mov       rdi, qword [rbp-24]
-          call      malloc
-          mov       qword [rbp-32], rax
-          mov       r10, 4
-          mov       r11, qword [rbp-32]
-          mov       [r11], r10
-          mov       r10, qword [rbp-32]
-          mov       qword [rbp-8], r10
-          mov       r10, qword [rbp-8]
-          mov       qword [rbp-40], r10
-          mov       r10, 2
-          imul      r10, 8
-          mov       qword [rbp-48], r10
-          mov       r10, qword [rbp-48]
-          add       r10, 8
-          mov       qword [rbp-56], r10
-          mov       r10, qword [rbp-40]
-          add       r10, qword [rbp-56]
-          mov       qword [rbp-64], r10
-          mov       r10, 2
-          mov       r11, qword [rbp-64]
-          mov       [r11], r10
-          mov       r10, qword [rbp-8]
-          mov       qword [rbp-72], r10
-          mov       r10, qword [rbp-72]
-          mov       qword [@a_var], r10
-          mov       r10, qword [@a_var]
-          mov       qword [rbp-80], r10
-          mov       r10, 2
-          imul      r10, 8
-          mov       qword [rbp-88], r10
-          mov       r10, qword [rbp-88]
-          add       r10, 8
-          mov       qword [rbp-96], r10
-          mov       r10, qword [rbp-80]
-          add       r10, qword [rbp-96]
-          mov       qword [rbp-104], r10
-          mov       r11, qword [rbp-104]
-          mov       r10, [r11]
-          mov       qword [rbp-112], r10
-          mov       rdi, qword [rbp-112]
-          call      toString_func
-          mov       qword [rbp-120], rax
-          mov       rdi, qword [rbp-120]
-          call      println_func
-          mov       rax, 0
-          leave     
-          ret       
           leave     
           ret       
 

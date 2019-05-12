@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+            <state relative-caret-position="570">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -54,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="971">
-              <caret line="148" column="39" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="39" />
+            <state relative-caret-position="405">
+              <caret line="430" column="45" lean-forward="true" selection-start-line="430" selection-start-column="45" selection-end-line="430" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -208,14 +208,14 @@
         <option value="$PROJECT_DIR$/src/beta1/IR/Quad/Binary.java" />
         <option value="$PROJECT_DIR$/src/beta1/IR/IRContext.java" />
         <option value="$PROJECT_DIR$/src/beta1/IR/BuildIR.java" />
-        <option value="$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java" />
         <option value="$PROJECT_DIR$/codegen.bash" />
         <option value="$PROJECT_DIR$/src/beta1/Main.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/Translator.java" />
+        <option value="$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -435,12 +435,12 @@
       <workItem from="1557627071873" duration="10940000" />
       <workItem from="1557662651851" duration="14000" />
       <workItem from="1557662683215" duration="3894000" />
-      <workItem from="1557669572452" duration="5417000" />
+      <workItem from="1557669572452" duration="6771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="463417000" />
+    <option name="totallyTimeSpent" value="464771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,16 +497,6 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/beta1/Main.java</url>
-          <line>60</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="node.name" />
@@ -894,13 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="971">
-          <caret line="148" column="39" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -925,8 +908,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        <state relative-caret-position="570">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="430" column="45" lean-forward="true" selection-start-line="430" selection-start-column="45" selection-end-line="430" selection-end-column="45" />
         </state>
       </provider>
     </entry>
