@@ -98,6 +98,7 @@ public class CheckST implements ASTVisitor {
         }
         if (!checkType(node.type)) throw new Exception("no such type");
         local.addVar(node.name,node.type);
+        local.addVardef(node.name,node);
     }
 
     @Override
@@ -260,7 +261,9 @@ public class CheckST implements ASTVisitor {
             now = now.father;
         }
         node.type = now.getVar(node.name);
+        node.define = now.getVardef(node.name);
         node.isleft = true;
+        if (node.name.equals("this")) node.isleft = false;
     }
 
     @Override
@@ -332,6 +335,7 @@ public class CheckST implements ASTVisitor {
         if (!(node.left.type instanceof ClassType)) throw new Exception("no such member");
         SymbolTable now = global.getClass(((ClassType) node.left.type).name).st;
         node.type = now.getVar(node.name);
+        node.define = now.getVardef(node.name);
         node.isleft = node.left.isleft;
     }
 

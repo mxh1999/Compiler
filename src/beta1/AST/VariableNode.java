@@ -14,6 +14,10 @@ public class VariableNode extends Node {
         init=_init;
     }
 
+    public boolean isglobal;
+    public boolean ismember;
+
+    public ClassNode belong;
     @Override
     public void accept(ASTVisitor visitor) throws Exception{
         visitor.visit(this);

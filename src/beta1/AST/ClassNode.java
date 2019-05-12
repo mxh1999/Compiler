@@ -24,4 +24,13 @@ public class ClassNode extends Node{
     public void accept(ASTVisitor visitor) throws Exception{
         visitor.visit(this);
     }
+
+    public int getoffset(String name) {
+        int ret = 0;
+        for (VariableNode i:member) {
+            ret += 8;
+            if (i.name.equals(name)) return ret;
+        }
+        return 0;
+    }
 }

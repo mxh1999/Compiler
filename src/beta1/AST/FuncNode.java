@@ -1,6 +1,6 @@
 package beta1.AST;
 
-import beta1.SymbolTable.SymbolTable;
+import beta1.IR.FuncIR;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +10,10 @@ public class FuncNode extends Node {
     public String name = null;
     public List<VariableNode> para;
     public BlockNode body;
+
+    public String global_name = null;
+    public ClassNode belong;
+    public boolean ismethod;
 
     public FuncNode() {
         returnvalue = new BasicType("void");

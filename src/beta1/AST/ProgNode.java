@@ -1,5 +1,7 @@
 package beta1.AST;
 
+import beta1.SymbolTable.ProgramST;
+
 import java.util.LinkedList;
 import java.util.List;
 

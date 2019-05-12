@@ -2,8 +2,11 @@ package beta1;
 
 import beta1.AST.BuildAST;
 import beta1.AST.ProgNode;
+import beta1.IR.BuildIR;
+import beta1.IR.IRContext;
 import beta1.SymbolTable.BuildST;
 import beta1.SymbolTable.CheckST;
+import beta1.Trans.Translator;
 import beta1.parser.mxErrorListener;
 import beta1.parser.mxErrorRecorder;
 import beta1.parser.mxLexer;
@@ -12,7 +15,9 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 public class Main {
     public static void main(String[] args) throws Exception{
@@ -45,5 +50,16 @@ public class Main {
 
         CheckST checkst = new CheckST(buildst);
         program.accept(checkst);
+
+        IRContext ir = new IRContext();
+        BuildIR buildir = new BuildIR(ir);
+        buildir.visit(program);
+
+        Translator translator = new Translator(ir);
+        OutputStream out = System.out;
+        //OutputStream out = new FileOutputStream("D:\\compiler\\mxh\\Compiler\\test.asm");
+        byte outdata[] = translator.IRtoNASM().getBytes();
+        out.write(outdata);
+        out.close();
     }
 }

@@ -6,9 +6,11 @@ import java.util.List;
 public class MemberExpr extends Expr {
     public Expr left;
     public String name;
+    public VariableNode define;
 
     public MemberExpr() {
         left = null;
+        define = null;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package beta1.AST;
 
+import beta1.IR.BlockIR;
 import beta1.SymbolTable.SymbolTable;
 
 import java.util.LinkedList;
@@ -9,6 +10,7 @@ public class BlockNode extends StateNode {
     public List<StateNode> statement;
 
     public SymbolTable st = null;
+    public BlockIR ir = null;
 
     public void add(StateNode state) {
         statement.add(state);
