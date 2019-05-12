@@ -177,7 +177,8 @@ public class Translator {
             text.append(fmt("sub"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("r10");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.MUL)) {
-            text.append(fmt("imul"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append(", ");text.append(getval(node.val2));text.append("\n");
+            text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
+            text.append(fmt("imul"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("r10");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.DIV)) {
             text.append(fmt("xor"));text.append("rdx");text.append(", ");text.append("rdx");text.append("\n");
