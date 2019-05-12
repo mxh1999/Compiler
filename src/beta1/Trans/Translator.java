@@ -287,7 +287,7 @@ public class Translator {
     public void visit(Malloc node) {
         text.append(fmt("mov"));text.append("rdi");text.append(", ");text.append(getval(node.size));text.append("\n");
         text.append(fmt("call"));text.append("malloc");text.append("\n");
-        text.append("mov");text.append(getReg(node.addr));text.append(", ");text.append("rax");text.append("\n");
+        text.append(fmt("mov"));text.append(getReg(node.addr));text.append(", ");text.append("rax");text.append("\n");
     }
 
     public void visit(Single node) {
