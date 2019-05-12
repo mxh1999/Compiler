@@ -105,7 +105,9 @@ public class Translator {
                 }
             }
         }
-        return offset+8*func.tmpname;
+        int ha = offset+8*func.tmpname;
+        if (ha%16!=0) ha+=8;
+        return ha;
     }
     private void addFunc(String name,FuncIR func) {
         int all_offset = get_size(func);

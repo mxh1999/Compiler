@@ -1,0 +1,573 @@
+     1                                  global main
+     2                                  SECTION .text
+     3                                  
+     4                                  array_size_func:
+     5 00000000 488B07                          mov     rax, [rdi]
+     6 00000003 C3                              ret
+     7                                  
+     8                                  
+     9                                  
+    10                                  
+    11                                  
+    12                                  default rel
+    13                                  
+    14                                  global print_func
+    15                                  global println_func
+    16                                  global getString_func
+    17                                  global getInt_func
+    18                                  global toString_func
+    19                                  global _string_length_func
+    20                                  global _string_substring_func
+    21                                  global _string_parseInt_func
+    22                                  global _string_ord_func
+    23                                  global _string_add_func
+    24                                  global _string_less_func
+    25                                  global _string_lessequal_func
+    26                                  global _string_great_func
+    27                                  global _string_greaterequal_func
+    28                                  global _string_equal_func
+    29                                  global _string_notequal_func
+    30                                  
+    31                                  extern strcmp
+    32                                  extern strcpy
+    33                                  extern strlen
+    34                                  extern malloc
+    35                                  extern __stack_chk_fail
+    36                                  extern __isoc99_scanf
+    37                                  extern puts
+    38                                  extern printf
+    39                                  extern _GLOBAL_OFFSET_TABLE_
+    40                                  
+    41                                  
+    42                                  SECTION .text   
+    43                                  
+    44                                  print_func:
+    45 00000004 55                              push    rbp
+    46 00000005 4889E5                          mov     rbp, rsp
+    47 00000008 4883EC10                        sub     rsp, 16
+    48 0000000C 48897DF8                        mov     qword [rbp-8H], rdi
+    49 00000010 488B45F8                        mov     rax, qword [rbp-8H]
+    50 00000014 4889C6                          mov     rsi, rax
+    51 00000017 488D3D(00000000)                lea     rdi, [rel L_017]
+    52 0000001E B800000000                      mov     eax, 0
+    53 00000023 E8(00000000)                    call    printf
+    54 00000028 90                              nop
+    55 00000029 C9                              leave
+    56 0000002A C3                              ret
+    57                                  
+    58                                  
+    59                                  println_func:
+    60 0000002B 55                              push    rbp
+    61 0000002C 4889E5                          mov     rbp, rsp
+    62 0000002F 4883EC10                        sub     rsp, 16
+    63 00000033 48897DF8                        mov     qword [rbp-8H], rdi
+    64 00000037 488B45F8                        mov     rax, qword [rbp-8H]
+    65 0000003B 4889C7                          mov     rdi, rax
+    66 0000003E E8(00000000)                    call    puts
+    67 00000043 90                              nop
+    68 00000044 C9                              leave
+    69 00000045 C3                              ret
+    70                                  
+    71                                  
+    72                                  getString_func:
+    73 00000046 55                              push    rbp
+    74 00000047 4889E5                          mov     rbp, rsp
+    75 0000004A 4883EC10                        sub     rsp, 16
+    76 0000004E 488B45F8                        mov     rax, qword [rbp-8H]
+    77 00000052 4889C6                          mov     rsi, rax
+    78 00000055 488D3D(00000000)                lea     rdi, [rel L_017]
+    79 0000005C B800000000                      mov     eax, 0
+    80 00000061 E8(00000000)                    call    __isoc99_scanf
+    81 00000066 488B45F8                        mov     rax, qword [rbp-8H]
+    82 0000006A C9                              leave
+    83 0000006B C3                              ret
+    84                                  
+    85                                  
+    86                                  getInt_func:
+    87 0000006C 55                              push    rbp
+    88 0000006D 4889E5                          mov     rbp, rsp
+    89 00000070 4883EC10                        sub     rsp, 16
+    90                                  
+    91                                  
+    92 00000074 64488B042528000000              mov     rax, qword [fs:abs 28H]
+    93 0000007D 488945F8                        mov     qword [rbp-8H], rax
+    94 00000081 31C0                            xor     eax, eax
+    95 00000083 488D45F4                        lea     rax, [rbp-0CH]
+    96 00000087 4889C6                          mov     rsi, rax
+    97 0000008A 488D3D(03000000)                lea     rdi, [rel L_018]
+    98 00000091 B800000000                      mov     eax, 0
+    99 00000096 E8(00000000)                    call    __isoc99_scanf
+   100 0000009B 8B45F4                          mov     eax, dword [rbp-0CH]
+   101 0000009E 488B55F8                        mov     rdx, qword [rbp-8H]
+   102                                  
+   103                                  
+   104 000000A2 644833142528000000              xor     rdx, qword [fs:abs 28H]
+   105 000000AB 7405                            jz      L_001
+   106 000000AD E8(00000000)                    call    __stack_chk_fail
+   107 000000B2 C9                      L_001:  leave
+   108 000000B3 C3                              ret
+   109                                  
+   110                                  
+   111                                  toString_func:
+   112 000000B4 55                              push    rbp
+   113 000000B5 4889E5                          mov     rbp, rsp
+   114 000000B8 4883EC30                        sub     rsp, 48
+   115 000000BC 897DDC                          mov     dword [rbp-24H], edi
+   116 000000BF 8B45DC                          mov     eax, dword [rbp-24H]
+   117 000000C2 8945EC                          mov     dword [rbp-14H], eax
+   118 000000C5 C745F000000000                  mov     dword [rbp-10H], 0
+   119 000000CC 837DEC00                        cmp     dword [rbp-14H], 0
+   120 000000D0 7907                            jns     L_002
+   121 000000D2 8345F001                        add     dword [rbp-10H], 1
+   122 000000D6 F75DEC                          neg     dword [rbp-14H]
+   123 000000D9 837DEC00                L_002:  cmp     dword [rbp-14H], 0
+   124 000000DD 7525                            jnz     L_004
+   125 000000DF 8345F001                        add     dword [rbp-10H], 1
+   126 000000E3 EB1F                            jmp     L_004
+   127                                  
+   128 000000E5 8345F001                L_003:  add     dword [rbp-10H], 1
+   129 000000E9 8B4DEC                          mov     ecx, dword [rbp-14H]
+   130 000000EC BA67666666                      mov     edx, 1717986919
+   131 000000F1 89C8                            mov     eax, ecx
+   132 000000F3 F7EA                            imul    edx
+   133 000000F5 C1FA02                          sar     edx, 2
+   134 000000F8 89C8                            mov     eax, ecx
+   135 000000FA C1F81F                          sar     eax, 31
+   136 000000FD 29C2                            sub     edx, eax
+   137 000000FF 89D0                            mov     eax, edx
+   138 00000101 8945EC                          mov     dword [rbp-14H], eax
+   139 00000104 837DEC00                L_004:  cmp     dword [rbp-14H], 0
+   140 00000108 75DB                            jnz     L_003
+   141 0000010A 8B45F0                          mov     eax, dword [rbp-10H]
+   142 0000010D 83C001                          add     eax, 1
+   143 00000110 4898                            cdqe
+   144 00000112 4889C7                          mov     rdi, rax
+   145 00000115 E8(00000000)                    call    malloc
+   146 0000011A 488945F8                        mov     qword [rbp-8H], rax
+   147 0000011E 8B45F0                          mov     eax, dword [rbp-10H]
+   148 00000121 4863D0                          movsxd  rdx, eax
+   149 00000124 488B45F8                        mov     rax, qword [rbp-8H]
+   150 00000128 4801D0                          add     rax, rdx
+   151 0000012B C60000                          mov     byte [rax], 0
+   152 0000012E 837DDC00                        cmp     dword [rbp-24H], 0
+   153 00000132 790A                            jns     L_005
+   154 00000134 488B45F8                        mov     rax, qword [rbp-8H]
+   155 00000138 C6002D                          mov     byte [rax], 45
+   156 0000013B F75DDC                          neg     dword [rbp-24H]
+   157 0000013E 837DDC00                L_005:  cmp     dword [rbp-24H], 0
+   158 00000142 750D                            jnz     L_006
+   159 00000144 488B45F8                        mov     rax, qword [rbp-8H]
+   160 00000148 C60030                          mov     byte [rax], 48
+   161 0000014B 488B45F8                        mov     rax, qword [rbp-8H]
+   162 0000014F EB6F                            jmp     L_011
+   163                                  
+   164 00000151 8B45F0                  L_006:  mov     eax, dword [rbp-10H]
+   165 00000154 83E801                          sub     eax, 1
+   166 00000157 8945F4                          mov     dword [rbp-0CH], eax
+   167 0000015A EB57                            jmp     L_008
+   168                                  
+   169 0000015C 8B4DDC                  L_007:  mov     ecx, dword [rbp-24H]
+   170 0000015F BA67666666                      mov     edx, 1717986919
+   171 00000164 89C8                            mov     eax, ecx
+   172 00000166 F7EA                            imul    edx
+   173 00000168 C1FA02                          sar     edx, 2
+   174 0000016B 89C8                            mov     eax, ecx
+   175 0000016D C1F81F                          sar     eax, 31
+   176 00000170 29C2                            sub     edx, eax
+   177 00000172 89D0                            mov     eax, edx
+   178 00000174 C1E002                          shl     eax, 2
+   179 00000177 01D0                            add     eax, edx
+   180 00000179 01C0                            add     eax, eax
+   181 0000017B 29C1                            sub     ecx, eax
+   182 0000017D 89CA                            mov     edx, ecx
+   183 0000017F 8B45F4                          mov     eax, dword [rbp-0CH]
+   184 00000182 4863C8                          movsxd  rcx, eax
+   185 00000185 488B45F8                        mov     rax, qword [rbp-8H]
+   186 00000189 4801C8                          add     rax, rcx
+   187 0000018C 8810                            mov     byte [rax], dl
+   188 0000018E 8B4DDC                          mov     ecx, dword [rbp-24H]
+   189 00000191 BA67666666                      mov     edx, 1717986919
+   190 00000196 89C8                            mov     eax, ecx
+   191 00000198 F7EA                            imul    edx
+   192 0000019A C1FA02                          sar     edx, 2
+   193 0000019D 89C8                            mov     eax, ecx
+   194 0000019F C1F81F                          sar     eax, 31
+   195 000001A2 29C2                            sub     edx, eax
+   196 000001A4 89D0                            mov     eax, edx
+   197 000001A6 8945DC                          mov     dword [rbp-24H], eax
+   198 000001A9 837DDC00                        cmp     dword [rbp-24H], 0
+   199 000001AD 740C                            jz      L_009
+   200 000001AF 836DF401                        sub     dword [rbp-0CH], 1
+   201 000001B3 837DF400                L_008:  cmp     dword [rbp-0CH], 0
+   202 000001B7 79A3                            jns     L_007
+   203 000001B9 EB01                            jmp     L_010
+   204                                  
+   205 000001BB 90                      L_009:  nop
+   206 000001BC 488B45F8                L_010:  mov     rax, qword [rbp-8H]
+   207 000001C0 C9                      L_011:  leave
+   208 000001C1 C3                              ret
+   209                                  
+   210                                  
+   211                                  _string_length_func:
+   212 000001C2 55                              push    rbp
+   213 000001C3 4889E5                          mov     rbp, rsp
+   214 000001C6 4883EC10                        sub     rsp, 16
+   215 000001CA 48897DF8                        mov     qword [rbp-8H], rdi
+   216 000001CE 488B45F8                        mov     rax, qword [rbp-8H]
+   217 000001D2 4889C7                          mov     rdi, rax
+   218 000001D5 E8(00000000)                    call    strlen
+   219 000001DA C9                              leave
+   220 000001DB C3                              ret
+   221                                  
+   222                                  
+   223                                  _string_substring_func:
+   224 000001DC 55                              push    rbp
+   225 000001DD 4889E5                          mov     rbp, rsp
+   226 000001E0 4883EC20                        sub     rsp, 32
+   227 000001E4 48897DE8                        mov     qword [rbp-18H], rdi
+   228 000001E8 8975E4                          mov     dword [rbp-1CH], esi
+   229 000001EB 8955E0                          mov     dword [rbp-20H], edx
+   230 000001EE 8B45E0                          mov     eax, dword [rbp-20H]
+   231 000001F1 2B45E4                          sub     eax, dword [rbp-1CH]
+   232 000001F4 83C002                          add     eax, 2
+   233 000001F7 8945F4                          mov     dword [rbp-0CH], eax
+   234 000001FA 8B45F4                          mov     eax, dword [rbp-0CH]
+   235 000001FD 4898                            cdqe
+   236 000001FF 4889C7                          mov     rdi, rax
+   237 00000202 E8(00000000)                    call    malloc
+   238 00000207 488945F8                        mov     qword [rbp-8H], rax
+   239 0000020B 8B45F4                          mov     eax, dword [rbp-0CH]
+   240 0000020E 4898                            cdqe
+   241 00000210 488D50FF                        lea     rdx, [rax-1H]
+   242 00000214 488B45F8                        mov     rax, qword [rbp-8H]
+   243 00000218 4801D0                          add     rax, rdx
+   244 0000021B C60000                          mov     byte [rax], 0
+   245 0000021E 8B45E4                          mov     eax, dword [rbp-1CH]
+   246 00000221 8945F0                          mov     dword [rbp-10H], eax
+   247 00000224 EB27                            jmp     L_013
+   248                                  
+   249 00000226 8B45F0                  L_012:  mov     eax, dword [rbp-10H]
+   250 00000229 4863D0                          movsxd  rdx, eax
+   251 0000022C 488B45E8                        mov     rax, qword [rbp-18H]
+   252 00000230 488D0C02                        lea     rcx, [rdx+rax]
+   253 00000234 8B45F0                          mov     eax, dword [rbp-10H]
+   254 00000237 2B45E4                          sub     eax, dword [rbp-1CH]
+   255 0000023A 4863D0                          movsxd  rdx, eax
+   256 0000023D 488B45F8                        mov     rax, qword [rbp-8H]
+   257 00000241 4801C2                          add     rdx, rax
+   258 00000244 0FB601                          movzx   eax, byte [rcx]
+   259 00000247 8802                            mov     byte [rdx], al
+   260 00000249 8345F001                        add     dword [rbp-10H], 1
+   261 0000024D 8B45F0                  L_013:  mov     eax, dword [rbp-10H]
+   262 00000250 3B45E0                          cmp     eax, dword [rbp-20H]
+   263 00000253 7ED1                            jle     L_012
+   264 00000255 488B45F8                        mov     rax, qword [rbp-8H]
+   265 00000259 C9                              leave
+   266 0000025A C3                              ret
+   267                                  
+   268                                  
+   269                                  _string_parseInt_func:
+   270 0000025B 55                              push    rbp
+   271 0000025C 4889E5                          mov     rbp, rsp
+   272 0000025F 48897DE8                        mov     qword [rbp-18H], rdi
+   273 00000263 C745F400000000                  mov     dword [rbp-0CH], 0
+   274 0000026A 488B45E8                        mov     rax, qword [rbp-18H]
+   275 0000026E 488945F8                        mov     qword [rbp-8H], rax
+   276 00000272 EB25                            jmp     L_015
+   277                                  
+   278 00000274 8B55F4                  L_014:  mov     edx, dword [rbp-0CH]
+   279 00000277 89D0                            mov     eax, edx
+   280 00000279 C1E002                          shl     eax, 2
+   281 0000027C 01D0                            add     eax, edx
+   282 0000027E 01C0                            add     eax, eax
+   283 00000280 89C2                            mov     edx, eax
+   284 00000282 488B45F8                        mov     rax, qword [rbp-8H]
+   285 00000286 0FB600                          movzx   eax, byte [rax]
+   286 00000289 0FBEC0                          movsx   eax, al
+   287 0000028C 01D0                            add     eax, edx
+   288 0000028E 83E830                          sub     eax, 48
+   289 00000291 8945F4                          mov     dword [rbp-0CH], eax
+   290 00000294 488345F801                      add     qword [rbp-8H], 1
+   291 00000299 488B45F8                L_015:  mov     rax, qword [rbp-8H]
+   292 0000029D 0FB600                          movzx   eax, byte [rax]
+   293 000002A0 3C39                            cmp     al, 57
+   294 000002A2 7F0B                            jg      L_016
+   295 000002A4 488B45F8                        mov     rax, qword [rbp-8H]
+   296 000002A8 0FB600                          movzx   eax, byte [rax]
+   297 000002AB 3C2F                            cmp     al, 47
+   298 000002AD 7FC5                            jg      L_014
+   299 000002AF 8B45F4                  L_016:  mov     eax, dword [rbp-0CH]
+   300 000002B2 5D                              pop     rbp
+   301 000002B3 C3                              ret
+   302                                  
+   303                                  
+   304                                  _string_ord_func:
+   305 000002B4 55                              push    rbp
+   306 000002B5 4889E5                          mov     rbp, rsp
+   307 000002B8 48897DF8                        mov     qword [rbp-8H], rdi
+   308 000002BC 8975F4                          mov     dword [rbp-0CH], esi
+   309 000002BF 8B45F4                          mov     eax, dword [rbp-0CH]
+   310 000002C2 4863D0                          movsxd  rdx, eax
+   311 000002C5 488B45F8                        mov     rax, qword [rbp-8H]
+   312 000002C9 4801D0                          add     rax, rdx
+   313 000002CC 0FB600                          movzx   eax, byte [rax]
+   314 000002CF 0FBEC0                          movsx   eax, al
+   315 000002D2 5D                              pop     rbp
+   316 000002D3 C3                              ret
+   317                                  
+   318                                  
+   319                                  _string_add_func:
+   320 000002D4 55                              push    rbp
+   321 000002D5 4889E5                          mov     rbp, rsp
+   322 000002D8 4883EC20                        sub     rsp, 32
+   323 000002DC 48897DE8                        mov     qword [rbp-18H], rdi
+   324 000002E0 488975E0                        mov     qword [rbp-20H], rsi
+   325 000002E4 488B45E8                        mov     rax, qword [rbp-18H]
+   326 000002E8 4889C7                          mov     rdi, rax
+   327 000002EB E8(00000000)                    call    strlen
+   328 000002F0 8945F0                          mov     dword [rbp-10H], eax
+   329 000002F3 488B45E0                        mov     rax, qword [rbp-20H]
+   330 000002F7 4889C7                          mov     rdi, rax
+   331 000002FA E8(00000000)                    call    strlen
+   332 000002FF 8945F4                          mov     dword [rbp-0CH], eax
+   333 00000302 8B55F0                          mov     edx, dword [rbp-10H]
+   334 00000305 8B45F4                          mov     eax, dword [rbp-0CH]
+   335 00000308 01D0                            add     eax, edx
+   336 0000030A 83C001                          add     eax, 1
+   337 0000030D 4898                            cdqe
+   338 0000030F 4889C7                          mov     rdi, rax
+   339 00000312 E8(00000000)                    call    malloc
+   340 00000317 488945F8                        mov     qword [rbp-8H], rax
+   341 0000031B 488B55E8                        mov     rdx, qword [rbp-18H]
+   342 0000031F 488B45F8                        mov     rax, qword [rbp-8H]
+   343 00000323 4889D6                          mov     rsi, rdx
+   344 00000326 4889C7                          mov     rdi, rax
+   345 00000329 E8(00000000)                    call    strcpy
+   346 0000032E 8B45F0                          mov     eax, dword [rbp-10H]
+   347 00000331 4863D0                          movsxd  rdx, eax
+   348 00000334 488B45F8                        mov     rax, qword [rbp-8H]
+   349 00000338 4801C2                          add     rdx, rax
+   350 0000033B 488B45E0                        mov     rax, qword [rbp-20H]
+   351 0000033F 4889C6                          mov     rsi, rax
+   352 00000342 4889D7                          mov     rdi, rdx
+   353 00000345 E8(00000000)                    call    strcpy
+   354 0000034A 8B55F0                          mov     edx, dword [rbp-10H]
+   355 0000034D 8B45F4                          mov     eax, dword [rbp-0CH]
+   356 00000350 01D0                            add     eax, edx
+   357 00000352 4863D0                          movsxd  rdx, eax
+   358 00000355 488B45F8                        mov     rax, qword [rbp-8H]
+   359 00000359 4801D0                          add     rax, rdx
+   360 0000035C C60000                          mov     byte [rax], 0
+   361 0000035F 488B45F8                        mov     rax, qword [rbp-8H]
+   362 00000363 C9                              leave
+   363 00000364 C3                              ret
+   364                                  
+   365                                  
+   366                                  _string_less_func:
+   367 00000365 55                              push    rbp
+   368 00000366 4889E5                          mov     rbp, rsp
+   369 00000369 4883EC10                        sub     rsp, 16
+   370 0000036D 48897DF8                        mov     qword [rbp-8H], rdi
+   371 00000371 488975F0                        mov     qword [rbp-10H], rsi
+   372 00000375 488B55F0                        mov     rdx, qword [rbp-10H]
+   373 00000379 488B45F8                        mov     rax, qword [rbp-8H]
+   374 0000037D 4889D6                          mov     rsi, rdx
+   375 00000380 4889C7                          mov     rdi, rax
+   376 00000383 E8(00000000)                    call    strcmp
+   377 00000388 C1E81F                          shr     eax, 31
+   378 0000038B C9                              leave
+   379 0000038C C3                              ret
+   380                                  
+   381                                  
+   382                                  _string_lessequal_func:
+   383 0000038D 55                              push    rbp
+   384 0000038E 4889E5                          mov     rbp, rsp
+   385 00000391 4883EC10                        sub     rsp, 16
+   386 00000395 48897DF8                        mov     qword [rbp-8H], rdi
+   387 00000399 488975F0                        mov     qword [rbp-10H], rsi
+   388 0000039D 488B55F0                        mov     rdx, qword [rbp-10H]
+   389 000003A1 488B45F8                        mov     rax, qword [rbp-8H]
+   390 000003A5 4889D6                          mov     rsi, rdx
+   391 000003A8 4889C7                          mov     rdi, rax
+   392 000003AB E8(00000000)                    call    strcmp
+   393 000003B0 85C0                            test    eax, eax
+   394 000003B2 0F9EC0                          setle   al
+   395 000003B5 C9                              leave
+   396 000003B6 C3                              ret
+   397                                  
+   398                                  
+   399                                  _string_great_func:
+   400 000003B7 55                              push    rbp
+   401 000003B8 4889E5                          mov     rbp, rsp
+   402 000003BB 4883EC10                        sub     rsp, 16
+   403 000003BF 48897DF8                        mov     qword [rbp-8H], rdi
+   404 000003C3 488975F0                        mov     qword [rbp-10H], rsi
+   405 000003C7 488B55F0                        mov     rdx, qword [rbp-10H]
+   406 000003CB 488B45F8                        mov     rax, qword [rbp-8H]
+   407 000003CF 4889D6                          mov     rsi, rdx
+   408 000003D2 4889C7                          mov     rdi, rax
+   409 000003D5 E8(00000000)                    call    strcmp
+   410 000003DA 85C0                            test    eax, eax
+   411 000003DC 0F9FC0                          setg    al
+   412 000003DF C9                              leave
+   413 000003E0 C3                              ret
+   414                                  
+   415                                  
+   416                                  _string_greaterequal_func:
+   417 000003E1 55                              push    rbp
+   418 000003E2 4889E5                          mov     rbp, rsp
+   419 000003E5 4883EC10                        sub     rsp, 16
+   420 000003E9 48897DF8                        mov     qword [rbp-8H], rdi
+   421 000003ED 488975F0                        mov     qword [rbp-10H], rsi
+   422 000003F1 488B55F0                        mov     rdx, qword [rbp-10H]
+   423 000003F5 488B45F8                        mov     rax, qword [rbp-8H]
+   424 000003F9 4889D6                          mov     rsi, rdx
+   425 000003FC 4889C7                          mov     rdi, rax
+   426 000003FF E8(00000000)                    call    strcmp
+   427 00000404 F7D0                            not     eax
+   428 00000406 C1E81F                          shr     eax, 31
+   429 00000409 C9                              leave
+   430 0000040A C3                              ret
+   431                                  
+   432                                  
+   433                                  _string_equal_func:
+   434 0000040B 55                              push    rbp
+   435 0000040C 4889E5                          mov     rbp, rsp
+   436 0000040F 4883EC10                        sub     rsp, 16
+   437 00000413 48897DF8                        mov     qword [rbp-8H], rdi
+   438 00000417 488975F0                        mov     qword [rbp-10H], rsi
+   439 0000041B 488B55F0                        mov     rdx, qword [rbp-10H]
+   440 0000041F 488B45F8                        mov     rax, qword [rbp-8H]
+   441 00000423 4889D6                          mov     rsi, rdx
+   442 00000426 4889C7                          mov     rdi, rax
+   443 00000429 E8(00000000)                    call    strcmp
+   444 0000042E 85C0                            test    eax, eax
+   445 00000430 0F94C0                          sete    al
+   446 00000433 C9                              leave
+   447 00000434 C3                              ret
+   448                                  
+   449                                  
+   450                                  _string_notequal_func:
+   451 00000435 55                              push    rbp
+   452 00000436 4889E5                          mov     rbp, rsp
+   453 00000439 4883EC10                        sub     rsp, 16
+   454 0000043D 48897DF8                        mov     qword [rbp-8H], rdi
+   455 00000441 488975F0                        mov     qword [rbp-10H], rsi
+   456 00000445 488B55F0                        mov     rdx, qword [rbp-10H]
+   457 00000449 488B45F8                        mov     rax, qword [rbp-8H]
+   458 0000044D 4889D6                          mov     rsi, rdx
+   459 00000450 4889C7                          mov     rdi, rax
+   460 00000453 E8(00000000)                    call    strcmp
+   461 00000458 85C0                            test    eax, eax
+   462 0000045A 0F95C0                          setne   al
+   463 0000045D C9                              leave
+   464 0000045E C3                              ret
+   465                                  
+   466                                  
+   467                                  
+   468                                  SECTION .data   
+   469                                  
+   470                                  
+   471                                  SECTION .bss    
+   472                                  
+   473                                  
+   474                                  SECTION .rodata 
+   475                                  
+   476                                  L_017:
+   477 00000000 257300                          db 25H, 73H, 00H
+   478                                  
+   479                                  L_018:
+   480 00000003 256400                          db 25H, 64H, 00H
+   481                                  
+   482                                  
+   483                                  section .text
+   484                                  main:
+   485 0000045F 55                                push      rbp
+   486 00000460 4889E5                            mov       rbp, rsp
+   487 00000463 4883EC18                          sub       rsp, 24
+   488                                  Lab_1:
+   489 00000467 41BA04000000                      mov       r10, 4
+   490 0000046D 4D6BD208                          imul      r10, 8
+   491 00000471 4C8955F8                          mov       qword [rbp-8], r10
+   492 00000475 4C8B55F8                          mov       r10, qword [rbp-8]
+   493 00000479 4983C208                          add       r10, 8
+   494 0000047D 4C8955F0                          mov       qword [rbp-16], r10
+   495 00000481 488B7DF0                          mov       rdi, qword [rbp-16]
+   496 00000485 E8(00000000)                      call      malloc
+   497 0000048A 488945E8                          mov       qword [rbp-24], rax
+   498 0000048E 41BA04000000                      mov       r10, 4
+   499 00000494 4C8B5DE8                          mov       r11, qword [rbp-24]
+   500 00000498 4D8913                            mov       [r11], r10
+   501 0000049B 4C8B55E8                          mov       r10, qword [rbp-24]
+   502 0000049F 4C8915(00000000)                  mov       qword [@a_var], r10
+   503 000004A6 E802000000                        call      main_func
+   504 000004AB C9                                leave     
+   505 000004AC C3                                ret       
+   506                                  
+   507                                  main_func:
+   508 000004AD 55                                push      rbp
+   509 000004AE 4889E5                            mov       rbp, rsp
+   510 000004B1 4883EC78                          sub       rsp, 120
+   511                                  Lab_2:
+   512 000004B5 41BA04000000                      mov       r10, 4
+   513 000004BB 4D6BD208                          imul      r10, 8
+   514 000004BF 4C8955F0                          mov       qword [rbp-16], r10
+   515 000004C3 4C8B55F0                          mov       r10, qword [rbp-16]
+   516 000004C7 4983C208                          add       r10, 8
+   517 000004CB 4C8955E8                          mov       qword [rbp-24], r10
+   518 000004CF 488B7DE8                          mov       rdi, qword [rbp-24]
+   519 000004D3 E8(00000000)                      call      malloc
+   520 000004D8 488945E0                          mov       qword [rbp-32], rax
+   521 000004DC 41BA04000000                      mov       r10, 4
+   522 000004E2 4C8B5DE0                          mov       r11, qword [rbp-32]
+   523 000004E6 4D8913                            mov       [r11], r10
+   524 000004E9 4C8B55E0                          mov       r10, qword [rbp-32]
+   525 000004ED 4C8955F8                          mov       qword [rbp-8], r10
+   526 000004F1 4C8B55F8                          mov       r10, qword [rbp-8]
+   527 000004F5 4C8955D8                          mov       qword [rbp-40], r10
+   528 000004F9 41BA02000000                      mov       r10, 2
+   529 000004FF 4D6BD208                          imul      r10, 8
+   530 00000503 4C8955D0                          mov       qword [rbp-48], r10
+   531 00000507 4C8B55D0                          mov       r10, qword [rbp-48]
+   532 0000050B 4983C208                          add       r10, 8
+   533 0000050F 4C8955C8                          mov       qword [rbp-56], r10
+   534 00000513 4C8B55D8                          mov       r10, qword [rbp-40]
+   535 00000517 4C0355C8                          add       r10, qword [rbp-56]
+   536 0000051B 4C8955C0                          mov       qword [rbp-64], r10
+   537 0000051F 41BA02000000                      mov       r10, 2
+   538 00000525 4C8B5DC0                          mov       r11, qword [rbp-64]
+   539 00000529 4D8913                            mov       [r11], r10
+   540 0000052C 4C8B55F8                          mov       r10, qword [rbp-8]
+   541 00000530 4C8955B8                          mov       qword [rbp-72], r10
+   542 00000534 4C8B55B8                          mov       r10, qword [rbp-72]
+   543 00000538 4C8915(00000000)                  mov       qword [@a_var], r10
+   544 0000053F 4C8B15(00000000)                  mov       r10, qword [@a_var]
+   545 00000546 4C8955B0                          mov       qword [rbp-80], r10
+   546 0000054A 41BA02000000                      mov       r10, 2
+   547 00000550 4D6BD208                          imul      r10, 8
+   548 00000554 4C8955A8                          mov       qword [rbp-88], r10
+   549 00000558 4C8B55A8                          mov       r10, qword [rbp-88]
+   550 0000055C 4983C208                          add       r10, 8
+   551 00000560 4C8955A0                          mov       qword [rbp-96], r10
+   552 00000564 4C8B55B0                          mov       r10, qword [rbp-80]
+   553 00000568 4C0355A0                          add       r10, qword [rbp-96]
+   554 0000056C 4C895598                          mov       qword [rbp-104], r10
+   555 00000570 4C8B5D98                          mov       r11, qword [rbp-104]
+   556 00000574 4D8B13                            mov       r10, [r11]
+   557 00000577 4C895590                          mov       qword [rbp-112], r10
+   558 0000057B 488B7D90                          mov       rdi, qword [rbp-112]
+   559 0000057F E830FBFFFF                        call      toString_func
+   560 00000584 48894588                          mov       qword [rbp-120], rax
+   561 00000588 488B7D88                          mov       rdi, qword [rbp-120]
+   562 0000058C E89AFAFFFF                        call      println_func
+   563 00000591 B800000000                        mov       rax, 0
+   564 00000596 C9                                leave     
+   565 00000597 C3                                ret       
+   566 00000598 C9                                leave     
+   567 00000599 C3                                ret       
+   568                                  
+   569                                  
+   570                                  section .data
+   571                                  section .bss
+   572                                  @a_var:
+   573 00000000 <res 00000008>                    resb      8

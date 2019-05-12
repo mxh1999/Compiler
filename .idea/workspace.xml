@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+            <state relative-caret-position="630">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -45,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4530">
+            <state relative-caret-position="338">
               <caret line="312" column="61" selection-start-line="312" selection-start-column="61" selection-end-line="312" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -57,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="971">
+              <caret line="148" column="39" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -85,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="179" column="104" selection-start-line="179" selection-start-column="104" selection-end-line="179" selection-end-column="104" />
+            <state relative-caret-position="690">
+              <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#291#292#0" expanded="true" />
@@ -123,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>For</find>
       <find>getVar</find>
       <find>&quot;this</find>
       <find>&quot;this&quot;</find>
@@ -153,6 +152,7 @@
       <find>'.'</find>
       <find>_string</find>
       <find>&quot;mov&quot;</find>
+      <find>malloc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -435,12 +435,12 @@
       <workItem from="1557627071873" duration="10940000" />
       <workItem from="1557662651851" duration="14000" />
       <workItem from="1557662683215" duration="3894000" />
-      <workItem from="1557669572452" duration="2828000" />
+      <workItem from="1557669572452" duration="5417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="460828000" />
+    <option name="totallyTimeSpent" value="463417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -464,7 +464,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -858,23 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4530">
-          <caret line="312" column="61" selection-start-line="312" selection-start-column="61" selection-end-line="312" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Store.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -904,13 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/AST/MethodExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -918,15 +894,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="971">
+          <caret line="148" column="39" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="312" column="61" selection-start-line="312" selection-start-column="61" selection-end-line="312" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="179" column="104" selection-start-line="179" selection-start-column="104" selection-end-line="179" selection-end-column="104" />
+        <state relative-caret-position="690">
+          <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#291#292#0" expanded="true" />
             <element signature="e#351#352#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
         </state>
       </provider>
     </entry>

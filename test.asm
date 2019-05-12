@@ -484,9 +484,10 @@ section .text
 main:
           push      rbp
           mov       rbp, rsp
-          sub       rsp, 24
+          sub       rsp, 32
 Lab_1:
-          imul      r10, 4, 8
+          mov       r10, 4
+          imul      r10, 8
           mov       qword [rbp-8], r10
           mov       r10, qword [rbp-8]
           add       r10, 8
@@ -508,7 +509,8 @@ main_func:
           mov       rbp, rsp
           sub       rsp, 120
 Lab_2:
-          imul      r10, 4, 8
+          mov       r10, 4
+          imul      r10, 8
           mov       qword [rbp-16], r10
           mov       r10, qword [rbp-16]
           add       r10, 8
@@ -523,7 +525,8 @@ Lab_2:
           mov       qword [rbp-8], r10
           mov       r10, qword [rbp-8]
           mov       qword [rbp-40], r10
-          imul      r10, 2, 8
+          mov       r10, 2
+          imul      r10, 8
           mov       qword [rbp-48], r10
           mov       r10, qword [rbp-48]
           add       r10, 8
@@ -540,7 +543,8 @@ Lab_2:
           mov       qword [@a_var], r10
           mov       r10, qword [@a_var]
           mov       qword [rbp-80], r10
-          imul      r10, 2, 8
+          mov       r10, 2
+          imul      r10, 8
           mov       qword [rbp-88], r10
           mov       r10, qword [rbp-88]
           add       r10, 8
