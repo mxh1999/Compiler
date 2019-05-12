@@ -182,9 +182,12 @@ public class preFuncTranslator {
                 "        add     rax, rax\n" +
                 "        sub     rcx, rax\n" +
                 "        mov     rdx, rcx\n" +
-                "        mov     rcx, qword [rbp-10H]\n" +
+                "        mov     eax, edx\n" +
+                "        lea     ecx, [rax+30H]\n" +
+                "        mov     rdx, qword [rbp-10H]\n" +
                 "        mov     rax, qword [rbp-8H]\n" +
-                "        add     rax, rcx\n" +
+                "        add     rax, rdx\n" +
+                "        mov     edx, ecx\n" +
                 "        mov     byte [rax], dl\n" +
                 "        mov     rcx, qword [rbp-28H]\n" +
                 "        mov     rdx, qword 6666666666666667H\n" +

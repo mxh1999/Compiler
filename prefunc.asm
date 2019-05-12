@@ -173,9 +173,12 @@ L_007:  mov     rcx, qword [rbp-28H]
         add     rax, rax
         sub     rcx, rax
         mov     rdx, rcx
-        mov     rcx, qword [rbp-10H]
+        mov     eax, edx
+        lea     ecx, [rax+30H]
+        mov     rdx, qword [rbp-10H]
         mov     rax, qword [rbp-8H]
-        add     rax, rcx
+        add     rax, rdx
+        mov     edx, ecx
         mov     byte [rax], dl
         mov     rcx, qword [rbp-28H]
         mov     rdx, qword 6666666666666667H
