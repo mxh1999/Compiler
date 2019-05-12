@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+            <state relative-caret-position="630">
+              <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="289" column="31" selection-start-line="289" selection-start-column="31" selection-end-line="289" selection-end-column="31" />
+            <state relative-caret-position="495">
+              <caret line="303" column="52" lean-forward="true" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#291#292#0" expanded="true" />
@@ -123,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WhileState</find>
       <find>For</find>
       <find>getVar</find>
       <find>&quot;this</find>
@@ -153,6 +152,7 @@
       <find>Alloc</find>
       <find>'.'</find>
       <find>_string</find>
+      <find>&quot;mov&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -210,8 +210,8 @@
         <option value="$PROJECT_DIR$/src/beta1/IR/BuildIR.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java" />
         <option value="$PROJECT_DIR$/codegen.bash" />
-        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/Translator.java" />
+        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
       </list>
     </option>
   </component>
@@ -435,12 +435,12 @@
       <workItem from="1557627071873" duration="10940000" />
       <workItem from="1557662651851" duration="14000" />
       <workItem from="1557662683215" duration="3894000" />
-      <workItem from="1557669572452" duration="1646000" />
+      <workItem from="1557669572452" duration="1795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="459646000" />
+    <option name="totallyTimeSpent" value="459795000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -911,22 +911,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="289" column="31" selection-start-line="289" selection-start-column="31" selection-end-line="289" selection-end-column="31" />
+        <state relative-caret-position="495">
+          <caret line="303" column="52" lean-forward="true" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#291#292#0" expanded="true" />
             <element signature="e#351#352#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
         </state>
       </provider>
     </entry>
