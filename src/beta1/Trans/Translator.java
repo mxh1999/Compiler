@@ -4,10 +4,7 @@ import beta1.AST.FuncNode;
 import beta1.IR.*;
 import beta1.IR.Quad.*;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Translator {
     private IRContext basic;
@@ -50,12 +47,46 @@ public class Translator {
         }
     }
 
+    private List<Integer> Str_to_ASCII(String str) {
+        List<Integer> ans = new LinkedList<>();
+        int len=str.length();
+        int i=0;
+        while (i<len) {
+            if (str.charAt(i)!='\\') {
+                ans.add((int)str.charAt(i));
+                i++;
+            }   else {
+                i++;
+                if (str.charAt(i)=='t') {
+                    ans.add(9);
+                }   else if (str.charAt(i)=='n') {
+                    ans.add(10);
+                }   else if (str.charAt(i)=='r') {
+                    ans.add(13);
+                }   else {
+                    ans.add((int) str.charAt(i));
+                }
+                i++;
+            }
+        }
+        return ans;
+    }
+
     private void addConstString() {
         ConstStringReg = new LinkedHashMap<>();
         for (Map.Entry<RegIR,String> i:basic.csval.entrySet()) {
             ConstStringReg.put(i.getKey(),i.getKey().name+"_cs");
             data.append(i.getKey().name+"_cs:\n");
-            data.append(fmt("db")); data.append("\""+i.getValue()+"\",0\n");
+            List<Integer> ha = Str_to_ASCII(i.getValue());
+            data.append(fmt("db"));
+            for (Integer j:ha) {
+                data.append(j.toString());
+                data.append(",");
+            }
+            data.append("0     ");
+            data.append(";");
+            data.append(i.getValue());
+            data.append("\n");
         }
     }
 
