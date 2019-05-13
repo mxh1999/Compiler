@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="615">
+              <caret line="58" column="40" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -45,11 +45,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="312" column="61" selection-start-line="312" selection-start-column="61" selection-end-line="312" selection-end-column="61" />
+            <state relative-caret-position="396">
+              <caret line="296" column="16" lean-forward="true" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beta1/AST/BinaryExpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -63,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
+            <state relative-caret-position="1290">
               <caret line="479" column="22" lean-forward="true" selection-start-line="479" selection-start-column="22" selection-end-line="479" selection-end-column="22" />
             </state>
           </provider>
@@ -75,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Store.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="255">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -88,12 +97,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
+            <state relative-caret-position="167">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#291#292#0" expanded="true" />
                 <element signature="e#351#352#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Binary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="470">
+              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#638#639#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getVar</find>
-      <find>&quot;this</find>
       <find>&quot;this&quot;</find>
       <find>addVar</find>
       <find>local</find>
@@ -153,6 +174,8 @@
       <find>_string</find>
       <find>&quot;mov&quot;</find>
       <find>malloc</find>
+      <find>new Binary</find>
+      <find>getop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ArrayST.java" />
         <option value="$PROJECT_DIR$/src/beta1/mx.g4" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/ProgramST.java" />
         <option value="$PROJECT_DIR$/src/beta1/SymbolTable/BuildST.java" />
@@ -207,11 +229,12 @@
         <option value="$PROJECT_DIR$/src/beta1/IR/RegIR.java" />
         <option value="$PROJECT_DIR$/src/beta1/IR/Quad/Binary.java" />
         <option value="$PROJECT_DIR$/src/beta1/IR/IRContext.java" />
-        <option value="$PROJECT_DIR$/src/beta1/IR/BuildIR.java" />
         <option value="$PROJECT_DIR$/codegen.bash" />
-        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/Translator.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java" />
+        <option value="$PROJECT_DIR$/0.txt" />
+        <option value="$PROJECT_DIR$/src/beta1/Main.java" />
+        <option value="$PROJECT_DIR$/src/beta1/IR/BuildIR.java" />
       </list>
     </option>
   </component>
@@ -435,12 +458,12 @@
       <workItem from="1557627071873" duration="10940000" />
       <workItem from="1557662651851" duration="14000" />
       <workItem from="1557662683215" duration="3894000" />
-      <workItem from="1557669572452" duration="7387000" />
+      <workItem from="1557669572452" duration="10343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="465387000" />
+    <option name="totallyTimeSpent" value="468343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -455,7 +478,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -465,7 +488,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -497,6 +520,22 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/beta1/Main.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java</url>
+          <line>262</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="node.name" />
@@ -504,8 +543,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/beta1/IR/ClassIR.java" />
-    <entry file="file://$PROJECT_DIR$/src/beta1/IR/ClassIT.java" />
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/IRTable.java" />
     <entry file="file://$PROJECT_DIR$/src/beta1/AST/ArrayType.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -704,16 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Binary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/CondJump.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -848,17 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Store.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Alloc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -877,6 +893,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/0.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Binary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="479" column="22" lean-forward="true" selection-start-line="479" selection-start-column="22" selection-end-line="479" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/AST/MethodExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -886,8 +928,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
+        <state relative-caret-position="167">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#291#292#0" expanded="true" />
@@ -896,27 +938,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/beta1/IR/Quad/Store.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/AST/BinaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="312" column="61" selection-start-line="312" selection-start-column="61" selection-end-line="312" selection-end-column="61" />
+        <state relative-caret-position="396">
+          <caret line="296" column="16" lean-forward="true" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java">
+    <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="479" column="22" lean-forward="true" selection-start-line="479" selection-start-column="22" selection-end-line="479" selection-end-column="22" />
+        <state relative-caret-position="615">
+          <caret line="58" column="40" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
         </state>
       </provider>
     </entry>

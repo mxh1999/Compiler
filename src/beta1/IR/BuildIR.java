@@ -278,7 +278,7 @@ public class BuildIR implements ASTVisitor{
             ctx.addQuad(new Jump(end));
             ctx.local.now = end;
             node.irvalue = ans;
-        }   if (node.op.equals("||")) {
+        }   else if (node.op.equals("||")) {
             node.a.accept(this);
             BlockIR end = ctx.local.newBlock();
             BlockIR doit = ctx.local.newBlock();
