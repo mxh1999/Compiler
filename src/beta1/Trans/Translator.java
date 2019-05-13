@@ -33,10 +33,18 @@ public class Translator {
             bss.append(fmt("resb"));    bss.append("8");    bss.append("\n");
         }
     }
+
+    private void lab_block() {
+        for (Map.Entry<String, FuncIR> i:basic.global.funcs.entrySet()) {
+            for (BlockIR j:i.getValue().blks) {
+                label_num ++;
+                blocklabel.put(j,"Lab_"+((Integer)label_num).toString()+":\n");
+            }
+        }
+    }
     private void visit(BlockIR node) {
         label_num++;
-        text.append("Lab_"+((Integer)label_num).toString()+":\n");
-        blocklabel.put(node,"Lab_"+((Integer)label_num).toString()+":\n");
+        text.append(blocklabel.get(node));
         for (Quad i:node.quads) {
             i.accept(this);
         }
@@ -55,6 +63,7 @@ public class Translator {
         StringBuilder str = new StringBuilder();
         str.append("global main\n");
         preFuncTranslator.addpreFunc(str);
+        lab_block();
         addGlobalVars();
         addConstString();
         for (Map.Entry<String, FuncIR> i:basic.global.funcs.entrySet()) {
