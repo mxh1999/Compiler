@@ -22,8 +22,8 @@ import java.io.OutputStream;
 public class Main {
     public static void main(String[] args) throws Exception{
         InputStream is;
-        //is =System.in;
-        is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\0.txt");
+        is =System.in;
+        //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\0.txt");
         ANTLRInputStream input = new ANTLRInputStream(is);
         mxLexer lexer = new mxLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -56,8 +56,8 @@ public class Main {
         buildir.visit(program);
 
         Translator translator = new Translator(ir);
-        //OutputStream out = System.out;
-        OutputStream out = new FileOutputStream("D:\\compiler\\mxh\\Compiler\\test.asm");
+        OutputStream out = System.out;
+        //OutputStream out = new FileOutputStream("D:\\compiler\\mxh\\Compiler\\test.asm");
         byte outdata[] = translator.IRtoNASM().getBytes();
         out.write(outdata);
         out.close();
