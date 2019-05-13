@@ -38,13 +38,13 @@ public class Translator {
         for (Map.Entry<String, FuncIR> i:basic.global.funcs.entrySet()) {
             for (BlockIR j:i.getValue().blks) {
                 label_num ++;
-                blocklabel.put(j,"Lab_"+((Integer)label_num).toString()+":\n");
+                blocklabel.put(j,"Lab_"+((Integer)label_num).toString());
             }
         }
     }
     private void visit(BlockIR node) {
         label_num++;
-        text.append(blocklabel.get(node));
+        text.append(blocklabel.get(node));text.append(":\n");
         for (Quad i:node.quads) {
             i.accept(this);
         }

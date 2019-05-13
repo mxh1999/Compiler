@@ -492,7 +492,8 @@ Lab_2:
           mov       qword [rbp-24], r10
           mov       r10, 0
           mov       qword [rbp-16], r10
-          jmp       null
+          jmp       Lab_3:
+
 Lab_3:
           mov       r10, qword [rbp-16]
           mov       qword [rbp-32], r10
@@ -505,7 +506,8 @@ Lab_3:
           not       r10
           mov       qword [rbp-48], r10
           cmp       qword [rbp-48], 0
-          jnz       null
+          jnz       Lab_8:
+
           mov       r10, qword [rbp-24]
           mov       qword [rbp-56], r10
           mov       r10, qword [rbp-16]
@@ -521,7 +523,8 @@ Lab_3:
           mov       qword [rbp-80], rax
           mov       r10, qword [rbp-80]
           mov       qword [rbp-88], r9
-          jmp       null
+          jmp       Lab_7:
+
 Lab_4:
           mov       r10, 10
           mov       qword [rbp-8], r10
@@ -529,7 +532,8 @@ Lab_5:
           mov       r10, 20
           mov       qword [rbp-8], r10
 Lab_6:
-          jmp       null
+          jmp       Lab_9:
+
 Lab_7:
           cmp       qword [rbp-88], 0
           jnz       Lab_4:
@@ -552,7 +556,8 @@ Lab_9:
           not       r10
           mov       qword [rbp-112], r10
           cmp       qword [rbp-112], 0
-          jnz       null
+          jnz       Lab_14:
+
           mov       r10, qword [rbp-24]
           mov       qword [rbp-120], r10
           mov       r10, qword [rbp-16]
@@ -568,7 +573,8 @@ Lab_9:
           mov       qword [rbp-144], rax
           mov       r10, qword [rbp-144]
           mov       qword [rbp-152], r9
-          jmp       null
+          jmp       Lab_13:
+
 Lab_10:
           mov       r10, 30
           mov       qword [rbp-8], r10
@@ -584,7 +590,8 @@ Lab_13:
           not       r10
           mov       qword [rbp-168], r10
           cmp       qword [rbp-168], 0
-          jnz       null
+          jnz       Lab_16:
+
           mov       r10, qword [rbp-24]
           mov       qword [rbp-176], r10
           mov       r10, qword [rbp-176]
@@ -594,7 +601,8 @@ Lab_13:
           mov       qword [rbp-184], rax
           mov       r10, qword [rbp-184]
           mov       qword [rbp-192], r9
-          jmp       null
+          jmp       Lab_15:
+
 Lab_14:
           mov       qword [rbp-152], 0
           jmp       Lab_13:
