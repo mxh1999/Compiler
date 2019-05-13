@@ -225,12 +225,14 @@ public class Translator {
         }   else if (node.op.equals(Binary.Opcode.DIV)) {
             text.append(fmt("xor"));text.append("rdx");text.append(", ");text.append("rdx");text.append("\n");
             text.append(fmt("mov"));text.append("rax");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("idiv"));text.append(getval(node.val2));text.append("\n");
+            text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
+            text.append(fmt("idiv"));text.append("r10");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.MOD)) {
             text.append(fmt("xor"));text.append("rdx");text.append(", ");text.append("rdx");text.append("\n");
             text.append(fmt("mov"));text.append("rax");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("idiv"));text.append(getval(node.val2));text.append("\n");
+            text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
+            text.append(fmt("idiv"));text.append("r10");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rdx");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.SHL)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");

@@ -504,8 +504,8 @@ qsrt_func:
           push      rbp
           mov       rbp, rsp
           sub       rsp, 656
-          mov       rbp-48, rdi
-          mov       rbp-40, rsi
+          mov       qword [rbp-48], rdi
+          mov       qword [rbp-40], rsi
 Lab_2:
           mov       r10, qword [rbp-48]
           mov       qword [rbp-56], r10
