@@ -160,31 +160,31 @@ public class Translator {
         text.append(fmt("mov"));text.append("rbp, rsp");text.append("\n");
         if (all_offset!=0) {text.append(fmt("sub"));text.append("rsp, ");text.append(((Integer)all_offset).toString());text.append("\n");}
         if (func.para_reg != null && !func.para_reg.isEmpty()) {
-            text.append(fmt("mov"));text.append(getReg(func.para_reg.get(0))+", rdi");text.append("\n");
+            text.append(fmt("mov"));text.append("qword ["); text.append(getReg(func.para_reg.get(0)));text.append("], rdi");text.append("\n");
             //RegIR_to_offset.put(func.para_reg.get(0),8);
             if (func.para_reg.size()>1) {
-                text.append(fmt("mov"));text.append(getReg(func.para_reg.get(1))+", rsi");text.append("\n");
+                text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(1)));text.append("], rsi");text.append("\n");
                 //RegIR_to_offset.put(func.para_reg.get(1),16);
             }
             if (func.para_reg.size()>2) {
-                text.append(fmt("mov"));text.append(getReg(func.para_reg.get(2))+", rdx");text.append("\n");
+                text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(2)));text.append("], rdx");text.append("\n");
                 //RegIR_to_offset.put(func.para_reg.get(2),3*8);
             }
             if (func.para_reg.size()>3) {
-                text.append(fmt("mov"));text.append(getReg(func.para_reg.get(3))+", rcx");text.append("\n");
+                text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(3)));text.append("], rcx");text.append("\n");
                 //RegIR_to_offset.put(func.para_reg.get(3),4*8);
             }
             if (func.para_reg.size()>4) {
-                text.append(fmt("mov"));text.append(getReg(func.para_reg.get(4))+", r8");text.append("\n");
+                text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(4)));text.append("], r8");text.append("\n");
                 //RegIR_to_offset.put(func.para_reg.get(4),5*8);
             }
             if (func.para_reg.size()>5) {
-                text.append(fmt("mov"));text.append(getReg(func.para_reg.get(5))+", r9");text.append("\n");
+                text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(5)));text.append("], r9");text.append("\n");
                 //RegIR_to_offset.put(func.para_reg.get(5),6*8);
             }
             if (func.para_reg.size()>6) {
                 for (int i=6;i<func.para_reg.size();i++) {
-                    text.append(fmt("pop"));text.append(getReg(func.para_reg.get(6)));text.append("\n");
+                    text.append(fmt("pop"));text.append("qword [");text.append(getReg(func.para_reg.get(6)));text.append("]\n");
                     //RegIR_to_offset.put(func.para_reg.get(i),i*8+8);
                 }
             }
