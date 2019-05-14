@@ -496,15 +496,24 @@ a_func:
           mov       qword [rbp-96], rcx
           mov       qword [rbp-88], r8
           mov       qword [rbp-80], r9
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
-          pop       qword [rbp-72]
+          mov       r10, qword [rbp+8]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+16]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+24]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+32]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+40]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+48]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+56]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+64]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp+72]
+          mov       qword [rbp-72], r10
 Lab_2:
           mov       r10, qword [rbp-120]
           mov       qword [rbp-128], r10
@@ -606,6 +615,7 @@ Lab_3:
           push      7
           call      a_func
           mov       qword [rbp-8], rax
+          sub       rsp, 72
           mov       rdi, qword [rbp-8]
           call      toString_func
           mov       qword [rbp-16], rax
