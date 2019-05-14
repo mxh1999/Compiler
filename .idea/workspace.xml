@@ -34,11 +34,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="508" column="41" selection-start-line="508" selection-start-column="41" selection-end-line="508" selection-end-column="41" />
+            <state relative-caret-position="428">
+              <caret line="497" column="33" selection-start-line="497" selection-start-column="33" selection-end-line="497" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="324" column="135" selection-start-line="324" selection-start-column="135" selection-end-line="324" selection-end-column="135" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,9 +155,9 @@
         <option value="$PROJECT_DIR$/codegen.bash" />
         <option value="$PROJECT_DIR$/0.txt" />
         <option value="$PROJECT_DIR$/src/beta1/Main.java" />
-        <option value="$PROJECT_DIR$/src/beta1/Trans/Translator.java" />
         <option value="$PROJECT_DIR$/src/beta1/Trans/preFuncTranslator.java" />
         <option value="$PROJECT_DIR$/src/beta1/IR/BuildIR.java" />
+        <option value="$PROJECT_DIR$/src/beta1/Trans/Translator.java" />
       </list>
     </option>
   </component>
@@ -371,12 +383,12 @@
       <workItem from="1557662683215" duration="3894000" />
       <workItem from="1557669572452" duration="17990000" />
       <workItem from="1557761738756" duration="608000" />
-      <workItem from="1557800738881" duration="2920000" />
+      <workItem from="1557800738881" duration="4236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="479518000" />
+    <option name="totallyTimeSpent" value="480834000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,16 +445,6 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/beta1/Trans/Translator.java</url>
-          <line>152</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="node.name" />
@@ -844,16 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="272" column="33" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -870,8 +862,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/IR/BuildIR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="508" column="41" selection-start-line="508" selection-start-column="41" selection-end-line="508" selection-end-column="41" />
+        <state relative-caret-position="428">
+          <caret line="497" column="33" selection-start-line="497" selection-start-column="33" selection-end-line="497" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="324" column="135" selection-start-line="324" selection-start-column="135" selection-end-line="324" selection-end-column="135" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
