@@ -256,38 +256,38 @@ public class Translator {
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("r10");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.GT)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("setg"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.GE)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("setge"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.LT)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("setl"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.LE)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("setle"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else if (node.op.equals(Binary.Opcode.EQ)) {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("sete"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }   else {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val1));text.append("\n");
-            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("xor"));text.append("rax");text.append(", ");text.append("rax");text.append("\n");
+            text.append(fmt("cmp"));text.append("r10");text.append(", ");text.append(getval(node.val2));text.append("\n");
             text.append(fmt("setne"));text.append("al");text.append("\n");
             text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("rax");text.append("\n");
         }
