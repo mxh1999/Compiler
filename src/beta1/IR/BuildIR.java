@@ -128,6 +128,7 @@ public class BuildIR implements ASTVisitor{
                 i.accept(this);
             }
         }
+        ctx.addQuad(new Ret(new RegIR("@void")));
     }
 
     @Override
@@ -181,6 +182,7 @@ public class BuildIR implements ASTVisitor{
         for (StateNode i:node.body.statement) {
             i.accept(this);
         }
+
     }
 
     @Override

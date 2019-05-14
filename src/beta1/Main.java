@@ -25,6 +25,7 @@ public class Main {
         is =System.in;
         //is =new FileInputStream("D:\\compiler\\mxh\\Compiler\\0.txt");
         ANTLRInputStream input = new ANTLRInputStream(is);
+        System.err.print(is);
         mxLexer lexer = new mxLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         mxParser parser = new mxParser(tokens);
