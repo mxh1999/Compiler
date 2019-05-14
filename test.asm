@@ -520,7 +520,7 @@ Lab_6:
           setg      al
           mov       qword [rbp-48], rax
           mov       r10, qword [rbp-48]
-          not       r10
+          xor       r10,1
           mov       qword [rbp-56], r10
           cmp       qword [rbp-56], 0
           jnz       Lab_11

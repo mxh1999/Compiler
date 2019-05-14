@@ -207,7 +207,7 @@ public class Translator {
             text.append(fmt("mov"));text.append(getReg(node.dest));text.append(", ");text.append(getval(node.val));text.append("\n");
         }   else {
             text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getReg((RegIR)node.val));text.append("\n");
-            text.append(fmt("mov"));text.append(getReg(node.dest));text.append(", ");text.append("r9");text.append("\n");
+            text.append(fmt("mov"));text.append(getReg(node.dest));text.append(", ");text.append("r10");text.append("\n");
         }
     }
     public void visit(Binary node) {
