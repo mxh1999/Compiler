@@ -530,10 +530,14 @@ public class BuildIR implements ASTVisitor{
         _forend = forend;
         ctx.addQuad(new Jump(forenter));
         ctx.local.now=forenter;
-        node.isnot.accept(this);
-        ValueIR tmp = GetArithResult(node.isnot);
-        ctx.addQuad(new CondJump(tmp,fordoit));
-        ctx.addQuad(new Jump(forend));
+        if (node.isnot!=null) {
+            node.isnot.accept(this);
+            ValueIR tmp = GetArithResult(node.isnot);
+            ctx.addQuad(new CondJump(tmp, fordoit));
+            ctx.addQuad(new Jump(forend));
+        }   else {
+            ctx.addQuad(new Jump(fordoit));
+        }
         ctx.local.now = fordoit;
         if (node.doit!=null) node.doit.accept(this);
         if (node.update!=null) node.update.accept(this);
