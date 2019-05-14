@@ -354,8 +354,13 @@ public class Translator {
         text.append(fmt("mov"));text.append(getReg(node.ans));text.append(", ");text.append("r10");text.append("\n");
     }
     public void visit(Ret node) {
-        if (!(node.val instanceof RegIR && ((RegIR) node.val).name.equals("@void")))
-            text.append(fmt("mov"));text.append("rax");text.append(", ");text.append(getval(node.val));text.append("\n");
+        if (!(node.val instanceof RegIR && ((RegIR) node.val).name.equals("@void"))) {
+            text.append(fmt("mov"));
+            text.append("rax");
+            text.append(", ");
+            text.append(getval(node.val));
+            text.append("\n");
+        }
         text.append(fmt("leave"));text.append("\n");
         text.append(fmt("ret"));text.append("\n");
     }
