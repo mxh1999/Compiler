@@ -146,10 +146,15 @@ public class BuildIR implements ASTVisitor{
             node.name = ctx.local.Rename(node.name);
 			RegIR var = new RegIR(node.name);
             ctx.addQuad(new Alloc(var));
-			if (node.init != null && !(node.init.type instanceof NullType)) {
-				node.init.accept(this);
-				ValueIR _init = GetArithResult(node.init);
-                ctx.addQuad(new Store(var, _init));
+			if (node.init != null) {
+			    if (!(node.init.type instanceof NullType)) {
+                    node.init.accept(this);
+                    ValueIR _init = GetArithResult(node.init);
+                    ctx.addQuad(new Store(var, _init));
+                }   else {
+			        ValueIR _init = new ConstIR(0);
+			        ctx.addQuad(new Store(var, _init));
+                }
 			}
 			ctx.vars.put(node,var);
         }
@@ -476,7 +481,10 @@ public class BuildIR implements ASTVisitor{
 
     @Override
     public void visit(ConstExpr node) throws Exception {
-        if (node.type.ac(new BasicType("bool"))) {
+        if (node.type instanceof NullType) {
+            ValueIR val = new ConstIR(0);
+            node.irvalue = val;
+        }   else if (node.type.ac(new BasicType("bool"))) {
             ValueIR val = new ConstIR(node.value.toLowerCase().equals("true")?1:0);
             node.irvalue = val;
         }   else if (node.type.ac(new BasicType("int"))) {
