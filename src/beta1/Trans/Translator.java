@@ -294,6 +294,7 @@ public class Translator {
         }
     }
     public void visit(Call node) {
+        int tmp = 0;
         if (node.para!=null && !node.para.isEmpty()) {
             text.append(fmt("mov"));text.append("rdi");text.append(", ");text.append(getval(node.para.get(0)));text.append("\n");
             if (node.para.size()>1) {
@@ -312,6 +313,10 @@ public class Translator {
                 text.append(fmt("mov"));text.append("r9");text.append(", ");text.append(getval(node.para.get(5)));text.append("\n");
             }
             if (node.para.size()>6) {
+                if (node.para.size()%2==1){
+                    text.append(fmt("sub"));text.append("rsp,8\n");
+                    tmp = 8;
+                }
                 for (int i=node.para.size()-1;i>=6;i--) {
                     text.append(fmt("push"));text.append(getval(node.para.get(i)));text.append("\n");
                 }
@@ -322,7 +327,7 @@ public class Translator {
             text.append(fmt("mov"));text.append(getReg(node.ret));text.append(", ");text.append("rax");text.append("\n");
         }
         if (node.para!=null && node.para.size()>6) {
-            text.append(fmt("add"));text.append("rsp, ");text.append(((Integer)((node.para.size()-6)*8)).toString());text.append("\n");
+            text.append(fmt("add"));text.append("rsp, ");text.append(((Integer)((node.para.size()-6)*8+tmp)).toString());text.append("\n");
         }
     }
     public void visit(Jump node) {
