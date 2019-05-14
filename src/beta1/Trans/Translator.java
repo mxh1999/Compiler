@@ -322,7 +322,7 @@ public class Translator {
             text.append(fmt("mov"));text.append(getReg(node.ret));text.append(", ");text.append("rax");text.append("\n");
         }
         if (node.para!=null && node.para.size()>6) {
-            text.append(fmt("sub"));text.append("rsp, ");text.append(((Integer)((node.para.size()-6)*8)).toString());text.append("\n");
+            text.append(fmt("add"));text.append("rsp, ");text.append(((Integer)((node.para.size()-6)*8)).toString());text.append("\n");
         }
     }
     public void visit(Jump node) {

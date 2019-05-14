@@ -60,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1452">
-              <caret line="209" column="101" selection-start-line="209" selection-start-column="101" selection-end-line="209" selection-end-column="101" />
+            <state relative-caret-position="743">
+              <caret line="324" column="32" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,7 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Assign</find>
       <find>new BlockIR</find>
       <find>Store</find>
       <find>Load</find>
@@ -110,6 +109,7 @@
       <find>IfS``</find>
       <find>Ifs</find>
       <find>not</find>
+      <find>call</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -401,12 +401,12 @@
       <workItem from="1557669572452" duration="17990000" />
       <workItem from="1557761738756" duration="608000" />
       <workItem from="1557800738881" duration="8114000" />
-      <workItem from="1557841790660" duration="2879000" />
+      <workItem from="1557841790660" duration="3489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="487591000" />
+    <option name="totallyTimeSpent" value="488201000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -907,8 +907,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1452">
-          <caret line="209" column="101" selection-start-line="209" selection-start-column="101" selection-end-line="209" selection-end-column="101" />
+        <state relative-caret-position="743">
+          <caret line="324" column="32" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
