@@ -26,9 +26,9 @@ global _string_notequal_func
 extern strcmp
 extern strcpy
 extern strlen
-extern malloc
 extern __stack_chk_fail
 extern __isoc99_scanf
+extern malloc
 extern puts
 extern printf
 extern _GLOBAL_OFFSET_TABLE_
@@ -68,6 +68,9 @@ getString_func:
         push    rbp
         mov     rbp, rsp
         sub     rsp, 16
+        mov     edi, 256
+        call    malloc
+        mov     qword [rbp-8H], rax
         mov     rax, qword [rbp-8H]
         mov     rsi, rax
         lea     rdi, [rel L_017]
