@@ -498,16 +498,16 @@ public class BuildIR implements ASTVisitor{
         ValueIR tmp = GetArithResult(node.isnot);
         ctx.addQuad(new CondJump(tmp,iftrue));
         ctx.addQuad(new Jump(iffalse));
+        ctx.local.now = iftrue;
         if (node.istrue!=null) {
-            ctx.local.now = iftrue;
             node.istrue.accept(this);
-            ctx.addQuad(new Jump(ifend));
         }
+        ctx.addQuad(new Jump(ifend));
+        ctx.local.now = iffalse;
         if (node.isfalse!=null) {
-            ctx.local.now = iffalse;
             node.isfalse.accept(this);
-            ctx.addQuad(new Jump(ifend));
         }
+        ctx.addQuad(new Jump(ifend));
         ctx.local.now = ifend;
     }
 
