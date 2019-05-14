@@ -501,10 +501,12 @@ public class BuildIR implements ASTVisitor{
         if (node.istrue!=null) {
             ctx.local.now = iftrue;
             node.istrue.accept(this);
+            ctx.addQuad(new Jump(ifend));
         }
         if (node.isfalse!=null) {
             ctx.local.now = iffalse;
             node.isfalse.accept(this);
+            ctx.addQuad(new Jump(ifend));
         }
         ctx.local.now = ifend;
     }
