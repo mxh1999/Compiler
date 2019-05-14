@@ -523,10 +523,11 @@ public class BuildIR implements ASTVisitor{
         if (node.init!=null) node.init.accept(this);
         BlockIR forenter = ctx.local.newBlock();
         BlockIR fordoit = ctx.local.newBlock();
+        BlockIR forupdate = ctx.local.newBlock();
         BlockIR forend = ctx.local.newBlock();
         BlockIR pre_forbegin = _forbegin;
         BlockIR pre_forend = _forend;
-        _forbegin = forenter;
+        _forbegin = forupdate;
         _forend = forend;
         ctx.addQuad(new Jump(forenter));
         ctx.local.now=forenter;
@@ -540,6 +541,8 @@ public class BuildIR implements ASTVisitor{
         }
         ctx.local.now = fordoit;
         if (node.doit!=null) node.doit.accept(this);
+        ctx.addQuad(new Jump(forupdate));
+        ctx.local.now = forupdate;
         if (node.update!=null) node.update.accept(this);
         ctx.addQuad(new Jump(forenter));
         ctx.local.now = forend;

@@ -481,145 +481,81 @@ section .text
 main:
           push      rbp
           mov       rbp, rsp
+          sub       rsp, 32
 Lab_1:
-          call      main_func
-          leave     
-          ret       
-
-a_func:
-          push      rbp
-          mov       rbp, rsp
-          sub       rsp, 352
-          mov       qword [rbp-120], rdi
-          mov       qword [rbp-112], rsi
-          mov       qword [rbp-104], rdx
-          mov       qword [rbp-96], rcx
-          mov       qword [rbp-88], r8
-          mov       qword [rbp-80], r9
-          mov       r10, qword [rbp+16]
-          mov       qword [rbp-72], r10
-          mov       r10, qword [rbp+24]
-          mov       qword [rbp-64], r10
-          mov       r10, qword [rbp+32]
-          mov       qword [rbp-56], r10
-          mov       r10, qword [rbp+40]
-          mov       qword [rbp-48], r10
-          mov       r10, qword [rbp+48]
-          mov       qword [rbp-40], r10
-          mov       r10, qword [rbp+56]
-          mov       qword [rbp-32], r10
-          mov       r10, qword [rbp+64]
-          mov       qword [rbp-24], r10
-          mov       r10, qword [rbp+72]
-          mov       qword [rbp-16], r10
-          mov       r10, qword [rbp+80]
+          mov       r10, 4
+          imul      r10, 8
           mov       qword [rbp-8], r10
-Lab_2:
-          mov       r10, qword [rbp-120]
-          mov       qword [rbp-128], r10
-          mov       r10, qword [rbp-112]
-          mov       qword [rbp-136], r10
-          mov       r10, qword [rbp-128]
-          add       r10, qword [rbp-136]
-          mov       qword [rbp-144], r10
-          mov       r10, qword [rbp-104]
-          mov       qword [rbp-152], r10
-          mov       r10, qword [rbp-144]
-          add       r10, qword [rbp-152]
-          mov       qword [rbp-160], r10
-          mov       r10, qword [rbp-96]
-          mov       qword [rbp-168], r10
-          mov       r10, qword [rbp-160]
-          add       r10, qword [rbp-168]
-          mov       qword [rbp-176], r10
-          mov       r10, qword [rbp-88]
-          mov       qword [rbp-184], r10
-          mov       r10, qword [rbp-176]
-          add       r10, qword [rbp-184]
-          mov       qword [rbp-192], r10
-          mov       r10, qword [rbp-80]
-          mov       qword [rbp-200], r10
-          mov       r10, qword [rbp-192]
-          add       r10, qword [rbp-200]
-          mov       qword [rbp-208], r10
-          mov       r10, qword [rbp-72]
-          mov       qword [rbp-216], r10
-          mov       r10, qword [rbp-208]
-          add       r10, qword [rbp-216]
-          mov       qword [rbp-224], r10
-          mov       r10, qword [rbp-64]
-          mov       qword [rbp-232], r10
-          mov       r10, qword [rbp-224]
-          add       r10, qword [rbp-232]
-          mov       qword [rbp-240], r10
-          mov       r10, qword [rbp-56]
-          mov       qword [rbp-248], r10
-          mov       r10, qword [rbp-240]
-          add       r10, qword [rbp-248]
-          mov       qword [rbp-256], r10
-          mov       r10, qword [rbp-48]
-          mov       qword [rbp-264], r10
-          mov       r10, qword [rbp-256]
-          add       r10, qword [rbp-264]
-          mov       qword [rbp-272], r10
-          mov       r10, qword [rbp-40]
-          mov       qword [rbp-280], r10
-          mov       r10, qword [rbp-272]
-          add       r10, qword [rbp-280]
-          mov       qword [rbp-288], r10
-          mov       r10, qword [rbp-32]
-          mov       qword [rbp-296], r10
-          mov       r10, qword [rbp-288]
-          add       r10, qword [rbp-296]
-          mov       qword [rbp-304], r10
-          mov       r10, qword [rbp-24]
-          mov       qword [rbp-312], r10
-          mov       r10, qword [rbp-304]
-          add       r10, qword [rbp-312]
-          mov       qword [rbp-320], r10
-          mov       r10, qword [rbp-16]
-          mov       qword [rbp-328], r10
-          mov       r10, qword [rbp-320]
-          add       r10, qword [rbp-328]
-          mov       qword [rbp-336], r10
           mov       r10, qword [rbp-8]
-          mov       qword [rbp-344], r10
-          mov       r10, qword [rbp-336]
-          add       r10, qword [rbp-344]
-          mov       qword [rbp-352], r10
-          mov       rax, qword [rbp-352]
-          leave     
-          ret       
+          add       r10, 8
+          mov       qword [rbp-16], r10
+          mov       rdi, qword [rbp-16]
+          call      malloc
+          mov       qword [rbp-24], rax
+          mov       r10, 4
+          mov       r11, qword [rbp-24]
+          mov       [r11], r10
+          mov       r10, qword [rbp-24]
+          mov       qword [@a_var], r10
+          call      main_func
           leave     
           ret       
 
 main_func:
           push      rbp
           mov       rbp, rsp
-          sub       rsp, 16
-Lab_3:
-          mov       rdi, 1
-          mov       rsi, 2
-          mov       rdx, 3
-          mov       rcx, 4
-          mov       r8, 5
-          mov       r9, 6
-          push      15
-          push      14
-          push      13
-          push      12
-          push      11
-          push      10
-          push      9
-          push      8
-          push      7
-          call      a_func
-          mov       qword [rbp-8], rax
-          sub       rsp, 72
-          mov       rdi, qword [rbp-8]
+          sub       rsp, 128
+Lab_2:
+          mov       r10, 4
+          imul      r10, 8
+          mov       qword [rbp-16], r10
+          mov       r10, qword [rbp-16]
+          add       r10, 8
+          mov       qword [rbp-24], r10
+          mov       rdi, qword [rbp-24]
+          call      malloc
+          mov       qword [rbp-32], rax
+          mov       r10, 4
+          mov       r11, qword [rbp-32]
+          mov       [r11], r10
+          mov       r10, qword [rbp-32]
+          mov       qword [rbp-8], r10
+          mov       r10, qword [rbp-8]
+          mov       qword [rbp-40], r10
+          mov       r10, 2
+          imul      r10, 8
+          mov       qword [rbp-48], r10
+          mov       r10, qword [rbp-48]
+          add       r10, 8
+          mov       qword [rbp-56], r10
+          mov       r10, qword [rbp-40]
+          add       r10, qword [rbp-56]
+          mov       qword [rbp-64], r10
+          mov       r10, 2
+          mov       r11, qword [rbp-64]
+          mov       [r11], r10
+          mov       r10, qword [rbp-8]
+          mov       qword [rbp-72], r10
+          mov       r10, qword [rbp-72]
+          mov       qword [@a_var], r10
+          mov       r10, qword [@a_var]
+          mov       qword [rbp-80], r10
+          mov       r10, 2
+          imul      r10, 8
+          mov       qword [rbp-88], r10
+          mov       r10, qword [rbp-88]
+          add       r10, 8
+          mov       qword [rbp-96], r10
+          mov       r10, qword [rbp-80]
+          add       r10, qword [rbp-96]
+          mov       qword [rbp-104], r10
+          mov       r11, qword [rbp-104]
+          mov       r10, [r11]
+          mov       qword [rbp-112], r10
+          mov       rdi, qword [rbp-112]
           call      toString_func
-          mov       qword [rbp-16], rax
-          mov       rdi, qword [rbp-16]
+          mov       qword [rbp-120], rax
+          mov       rdi, qword [rbp-120]
           call      println_func
           mov       rax, 0
           leave     
@@ -630,3 +566,5 @@ Lab_3:
 
 section .data
 section .bss
+@a_var:
+          resb      8
