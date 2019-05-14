@@ -28,8 +28,8 @@ public class ClassNode extends Node{
     public int getoffset(String name) {
         int ret = 0;
         for (VariableNode i:member) {
-            ret += 8;
             if (i.name.equals(name)) return ret;
+            ret += 8;
         }
         return 0;
     }
