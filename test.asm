@@ -499,21 +499,21 @@ a_func:
           mov       r10, qword [rbp+8]
           mov       qword [rbp-72], r10
           mov       r10, qword [rbp+16]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-64], r10
           mov       r10, qword [rbp+24]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-56], r10
           mov       r10, qword [rbp+32]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-48], r10
           mov       r10, qword [rbp+40]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-40], r10
           mov       r10, qword [rbp+48]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-32], r10
           mov       r10, qword [rbp+56]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-24], r10
           mov       r10, qword [rbp+64]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-16], r10
           mov       r10, qword [rbp+72]
-          mov       qword [rbp-72], r10
+          mov       qword [rbp-8], r10
 Lab_2:
           mov       r10, qword [rbp-120]
           mov       qword [rbp-128], r10

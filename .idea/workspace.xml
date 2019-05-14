@@ -50,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="186" column="121" selection-start-line="186" selection-start-column="121" selection-end-line="186" selection-end-column="121" />
+              <caret line="186" column="135" selection-start-line="186" selection-start-column="135" selection-end-line="186" selection-end-column="135" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -383,12 +383,12 @@
       <workItem from="1557662683215" duration="3894000" />
       <workItem from="1557669572452" duration="17990000" />
       <workItem from="1557761738756" duration="608000" />
-      <workItem from="1557800738881" duration="4800000" />
+      <workItem from="1557800738881" duration="5406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="481398000" />
+    <option name="totallyTimeSpent" value="482004000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,7 +873,7 @@
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="186" column="121" selection-start-line="186" selection-start-column="121" selection-end-line="186" selection-end-column="121" />
+          <caret line="186" column="135" selection-start-line="186" selection-start-column="135" selection-end-line="186" selection-end-column="135" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

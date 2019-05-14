@@ -184,7 +184,7 @@ public class Translator {
             }
             if (func.para_reg.size()>6) {
                 for (int i=6;i<func.para_reg.size();i++) {
-                    text.append(fmt("mov"));text.append("r10");text.append(", ");text.append("qword [rbp+");text.append(((Integer)((i-5)*8)).toString());text.append("]\n");
+                    text.append(fmt("mov"));text.append("r10");text.append(", ");text.append("qword [rbp+");text.append(((Integer)((i-4)*8)).toString());text.append("]\n");
                     text.append(fmt("mov"));text.append("qword [");text.append(getReg(func.para_reg.get(i)));text.append("], r10\n");
                     //RegIR_to_offset.put(func.para_reg.get(i),i*8+8);
                 }
