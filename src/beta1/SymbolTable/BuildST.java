@@ -63,6 +63,7 @@ public class BuildST implements ASTVisitor {
     public void visit(VariableNode node) throws Exception {
         if (node.type.ac(new BasicType("void")) || node.type instanceof NullType) throw new Exception("Variable can't be void");
         local.addVar(node.name,node.type);
+        local.addVardef(node.name,node);
     }
 
     @Override
