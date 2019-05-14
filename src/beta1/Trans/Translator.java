@@ -342,7 +342,7 @@ public class Translator {
     public void visit(Single node) {
         text.append(fmt("mov"));text.append("r10");text.append(", ");text.append(getval(node.val));text.append("\n");
         if (node.op.equals(Single.Opcode.NOT)) {
-            text.append(fmt("not"));text.append("r10");text.append("\n");
+            text.append(fmt("xor"));text.append("r10");text.append(",1");text.append("\n");
         }   else {
             text.append(fmt("neg"));text.append("r10");text.append("\n");
         }
