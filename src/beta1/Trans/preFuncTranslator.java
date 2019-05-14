@@ -4,7 +4,7 @@ public class preFuncTranslator {
     public static void addpreFunc(StringBuilder str) {
         str.append("SECTION .text\n" +
                 "\n" +
-                "array_size_func:\n" +
+                "_array_size_func:\n" +
                 "        mov     rax, [rdi]\n" +
                 "        ret");
         str.append("\n" +
