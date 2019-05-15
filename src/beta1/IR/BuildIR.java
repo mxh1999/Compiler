@@ -16,6 +16,8 @@ public class BuildIR implements ASTVisitor{
     private BlockIR _forbegin= null;
     private BlockIR _forend =null;
 
+    private String nowclass = null;
+
     public BuildIR(IRContext _ctx) {
         ctx= _ctx;
     }
@@ -199,10 +201,12 @@ public class BuildIR implements ASTVisitor{
 
     @Override
     public void visit(ClassNode node) throws Exception {
+        nowclass = node.name;
         for (FuncNode i:node.method) {
             i.accept(this);
         }
         if (node.construction != null) node.construction.accept(this);
+        nowclass = null;
     }
 
     @Override
@@ -421,7 +425,10 @@ public class BuildIR implements ASTVisitor{
             }
         }
         RegIR ret = (node.type.ac(new BasicType("void")))? new RegIR("@void"):ctx.local.getTmpReg();
-        FuncNode def = ctx.func.get(node.name);
+        String maybename;
+        if (nowclass!=null) maybename= '_'+ nowclass+'_'+node.name;
+        else maybename = node.name;
+        FuncNode def = ctx.func.get(maybename);
 
         if (def == null || !def.ismethod) {
             ctx.addQuad(new Call(node.name,ret,para));
@@ -429,7 +436,7 @@ public class BuildIR implements ASTVisitor{
             RegIR thisval = ctx.local.getTmpReg();
             ctx.addQuad(new Load(thisval,ctx.local._this));
             para.add(0,thisval);
-            ctx.addQuad(new Call(node.name,ret,para));
+            ctx.addQuad(new Call(maybename,ret,para));
         }
         node.irvalue = ret;
     }
