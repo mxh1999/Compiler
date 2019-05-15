@@ -93,6 +93,7 @@ public class BuildIR implements ASTVisitor{
             BlockIR begin = ctx.local.newBlock();
             BlockIR end = ctx.local.newBlock();
             ctx.addQuad(new Jump(begin));
+            ctx.local.now=begin;
             RegIR cond = ctx.local.getTmpReg();
             ctx.addQuad(new Binary(cond,GE,i,tmp));
             ctx.addQuad(new CondJump(cond,end));
