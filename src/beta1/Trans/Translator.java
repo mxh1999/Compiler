@@ -85,7 +85,7 @@ public class Translator {
             }
             data.append("0     ");
             data.append(";");
-            data.append(i.getValue());
+            //data.append(i.getValue());
             data.append("\n");
         }
     }
