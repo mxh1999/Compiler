@@ -756,7 +756,7 @@ Lab_19:
 _vector_scalarInPlaceMultiply_func:
           push      rbp
           mov       rbp, rsp
-          sub       rsp, 272
+          sub       rsp, 256
           mov       qword [rbp-24], rdi
           mov       qword [rbp-16], rsi
 Lab_20:
@@ -805,79 +805,69 @@ Lab_25:
           jnz       Lab_26
           jmp       Lab_28
 Lab_26:
-          mov       r10, qword [rbp-8]
+          mov       r10, qword [rbp-24]
           mov       qword [rbp-96], r10
-          mov       rdi, qword [rbp-96]
-          call      toString_func
-          mov       qword [rbp-104], rax
-          mov       rdi, qword [rbp-104]
-          call      println_func
-          mov       r11, qword [rbp-112]
+          mov       r10, qword [rbp-96]
+          add       r10, 0
+          mov       qword [rbp-104], r10
+          mov       r10, qword [rbp-8]
+          mov       qword [rbp-112], r10
+          mov       r11, qword [rbp-104]
           mov       r10, [r11]
           mov       qword [rbp-120], r10
-          mov       r10, qword [rbp-120]
-          add       r10, 0
-          mov       qword [rbp-128], r10
-          mov       r10, qword [rbp-8]
-          mov       qword [rbp-136], r10
-          mov       r11, qword [rbp-128]
-          mov       r10, [r11]
-          mov       qword [rbp-144], r10
-          mov       r10, qword [rbp-136]
+          mov       r10, qword [rbp-112]
           imul      r10, 8
+          mov       qword [rbp-128], r10
+          mov       r10, qword [rbp-128]
+          add       r10, 8
+          mov       qword [rbp-136], r10
+          mov       r10, qword [rbp-120]
+          add       r10, qword [rbp-136]
+          mov       qword [rbp-144], r10
+          mov       r10, qword [rbp-24]
           mov       qword [rbp-152], r10
           mov       r10, qword [rbp-152]
-          add       r10, 8
+          add       r10, 0
           mov       qword [rbp-160], r10
-          mov       r10, qword [rbp-144]
-          add       r10, qword [rbp-160]
+          mov       r10, qword [rbp-8]
           mov       qword [rbp-168], r10
-          mov       r11, qword [rbp-112]
+          mov       r11, qword [rbp-160]
           mov       r10, [r11]
           mov       qword [rbp-176], r10
-          mov       r10, qword [rbp-176]
-          add       r10, 0
-          mov       qword [rbp-184], r10
-          mov       r10, qword [rbp-8]
-          mov       qword [rbp-192], r10
-          mov       r11, qword [rbp-184]
-          mov       r10, [r11]
-          mov       qword [rbp-200], r10
-          mov       r10, qword [rbp-192]
+          mov       r10, qword [rbp-168]
           imul      r10, 8
-          mov       qword [rbp-208], r10
-          mov       r10, qword [rbp-208]
+          mov       qword [rbp-184], r10
+          mov       r10, qword [rbp-184]
           add       r10, 8
-          mov       qword [rbp-216], r10
-          mov       r10, qword [rbp-200]
-          add       r10, qword [rbp-216]
-          mov       qword [rbp-224], r10
+          mov       qword [rbp-192], r10
+          mov       r10, qword [rbp-176]
+          add       r10, qword [rbp-192]
+          mov       qword [rbp-200], r10
           mov       r10, qword [rbp-16]
-          mov       qword [rbp-232], r10
-          mov       r11, qword [rbp-224]
+          mov       qword [rbp-208], r10
+          mov       r11, qword [rbp-200]
           mov       r10, [r11]
-          mov       qword [rbp-240], r10
-          mov       r10, qword [rbp-232]
-          imul      r10, qword [rbp-240]
-          mov       qword [rbp-248], r10
-          mov       r10, qword [rbp-248]
-          mov       r11, qword [rbp-168]
+          mov       qword [rbp-216], r10
+          mov       r10, qword [rbp-208]
+          imul      r10, qword [rbp-216]
+          mov       qword [rbp-224], r10
+          mov       r10, qword [rbp-224]
+          mov       r11, qword [rbp-144]
           mov       [r11], r10
           jmp       Lab_27
 Lab_27:
           mov       r10, qword [rbp-8]
-          mov       qword [rbp-256], r10
-          mov       r10, qword [rbp-256]
+          mov       qword [rbp-232], r10
+          mov       r10, qword [rbp-232]
           add       r10, 1
-          mov       qword [rbp-264], r10
-          mov       r10, qword [rbp-264]
+          mov       qword [rbp-240], r10
+          mov       r10, qword [rbp-240]
           mov       qword [rbp-8], r10
           jmp       Lab_25
 Lab_28:
-          mov       r11, qword [rbp-112]
-          mov       r10, [r11]
-          mov       qword [rbp-272], r10
-          mov       rax, qword [rbp-272]
+          mov       r10, qword [rbp-24]
+          mov       qword [rbp-248], r10
+          mov       rax, qword [rbp-248]
           leave     
           ret       
           leave     
