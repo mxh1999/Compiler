@@ -336,7 +336,7 @@ public class CheckST implements ASTVisitor {
         SymbolTable now = global.getClass(((ClassType) node.left.type).name).st;
         node.type = now.getVar(node.name);
         node.define = now.getVardef(node.name);
-        node.isleft = node.left.isleft;
+        node.isleft = true;//node.left.isleft;
     }
 
     @Override

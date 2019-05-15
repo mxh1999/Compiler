@@ -208,7 +208,7 @@ public class BuildIR implements ASTVisitor{
     @Override
     public void visit(VarExpr node) throws Exception {
         VariableNode def = node.define;
-        if (def.ismember) {
+        if (def != null && def.ismember) {
             RegIR _this = ctx.local._this;
             RegIR headPtr = ctx.local.getTmpReg();
             ctx.addQuad(new Load(headPtr,_this));
