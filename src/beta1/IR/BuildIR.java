@@ -222,8 +222,13 @@ public class BuildIR implements ASTVisitor{
             ctx.addQuad(new Binary(memPtr,ADD,headPtr,offset));
             node.iraddr = memPtr;
         }   else {
-            RegIR var = ctx.vars.get(def);
-            node.iraddr = var;
+            if (def == null) {
+                RegIR var = ctx.local.para_reg.get(0);
+                node.iraddr = var;
+            }   else {
+                RegIR var = ctx.vars.get(def);
+                node.iraddr = var;
+            }
         }
     }
 
