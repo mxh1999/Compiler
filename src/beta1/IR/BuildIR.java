@@ -100,6 +100,7 @@ public class BuildIR implements ASTVisitor{
             RegIR nxt = newArray(node,dep+1);
             ctx.addQuad(new Store(addr,nxt));
             ctx.addQuad(new Binary(addr,ADD,addr,new ConstIR(8)));
+            ctx.addQuad(new Binary(i,ADD,i,new ConstIR(1)));
             ctx.addQuad(new Jump(begin));
             ctx.local.now=end;
         }
