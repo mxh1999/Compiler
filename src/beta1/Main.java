@@ -6,6 +6,7 @@ import beta1.IR.BuildIR;
 import beta1.IR.IRContext;
 import beta1.SymbolTable.BuildST;
 import beta1.SymbolTable.CheckST;
+import beta1.Trans.IRCorrector;
 import beta1.Trans.Translator;
 import beta1.parser.mxErrorListener;
 import beta1.parser.mxErrorRecorder;
@@ -55,6 +56,9 @@ public class Main {
         IRContext ir = new IRContext();
         BuildIR buildir = new BuildIR(ir);
         buildir.visit(program);
+
+        IRCorrector itcorrector = new IRCorrector();
+        itcorrector.visit(ir);
 
         Translator translator = new Translator(ir);
         OutputStream out = System.out;

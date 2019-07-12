@@ -7,4 +7,5 @@ abstract public class Quad {
     public BlockIR blk;
 
     public abstract void accept(Translator visitor);
+
 }
