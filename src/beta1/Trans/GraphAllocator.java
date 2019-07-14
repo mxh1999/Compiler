@@ -2,16 +2,22 @@ package beta1.Trans;
 
 import beta1.IR.FuncIR;
 import beta1.IR.IRContext;
+import beta1.IR.RegIR;
+import beta1.Trans.LiveAnalyser.Graph;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public class GraphAllocator {
     private IRContext ir;
 
     private LinkedList<String> generalRegisters = new LinkedList<>();
+    private static LiveAnalyser analyser =new LiveAnalyser();
     private int K;
 
     FuncIR function;
+    Graph origin,graph;
+    LinkedHashMap<RegIR,String> answer;
 
     public GraphAllocator(IRContext _ir) {
         ir=_ir;
@@ -38,5 +44,7 @@ public class GraphAllocator {
         }
     }
 
+    void processFunction() {
 
+    }
 }
