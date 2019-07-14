@@ -6,6 +6,7 @@ import beta1.IR.BuildIR;
 import beta1.IR.IRContext;
 import beta1.SymbolTable.BuildST;
 import beta1.SymbolTable.CheckST;
+import beta1.Trans.GraphAllocator;
 import beta1.Trans.IRCorrector;
 import beta1.Trans.Translator;
 import beta1.parser.mxErrorListener;
@@ -59,6 +60,9 @@ public class Main {
 
         IRCorrector itcorrector = new IRCorrector();
         itcorrector.visit(ir);
+
+        GraphAllocator allocator = new GraphAllocator(ir);
+        allocator.doit();
 
         Translator translator = new Translator(ir);
         OutputStream out = System.out;
