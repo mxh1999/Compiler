@@ -2,6 +2,7 @@ package beta1.Trans;
 
 import beta1.IR.BlockIR;
 import beta1.IR.FuncIR;
+import beta1.IR.Quad.Assign;
 import beta1.IR.Quad.Call;
 import beta1.IR.Quad.Quad;
 import beta1.IR.RegIR;
@@ -88,49 +89,31 @@ public class LiveAnalyser {
     private void initUsedAndDefinedRegisters(BlockIR bb, boolean nowAfterAllocate) {
         HashSet<RegIR> bbUsedRegisters = new HashSet<>();
         HashSet<RegIR> bbDefinedRegisters = new HashSet<>();
-        for(Quad inst : bb.quads) {
-            LinkedList<Register> usedRegs;
-            usedRegs = inst.getUseRegs();
-            for(RegIR reg : trans(usedRegs))
-                if(!bbDefinedRegisters.contains(reg))
-                    bbUsedRegisters.add(reg);
-            bbDefinedRegisters.addAll(trans(inst.getDefRegs()));
-        }
         definedRegisters.put(bb, bbDefinedRegisters);
         usedRegisters.put(bb, bbUsedRegisters);
     }
 
-    private boolean isMoveBetweenRegisters(IRInstruction inst) {
-        if(inst instanceof Move) {
-            Move move = (Move)inst;
-            return move.dest instanceof RegIR && move.src instanceof RegIR;
-        } else {
-            return false;
-        }
-    }
-
-    public LinkedList<RegIR> trans(Collection<Register> registers) {
+    public LinkedList<RegIR> trans(Collection<RegIR> registers) {
         LinkedList<RegIR> RegIRs = new LinkedList<>();
-        for(Register reg : registers) {
-            RegIRs.add((RegIR) reg);
+        for(RegIR reg : registers) {
+            RegIRs.add(reg);
         }
         return RegIRs;
     }
 
-    private void calcLiveOut(Function function, boolean nowAfterAllocate) {
+    private void calcLiveOut(FuncIR function, boolean nowAfterAllocate) {
         init(function);
 
-        for(BlockIR bb : function.basicblocks)
+        for(BlockIR bb : function.blks)
             initUsedAndDefinedRegisters(bb, nowAfterAllocate);
 
-        /* calculate the liveOut set of each BlockIR */
         boolean changed = true;
-        while(changed) {
+        while (changed) {
             changed = false;
-            LinkedList<BlockIR> basicBlocks = function.reversePostOrderOnReverseCFG;
+            LinkedList<BlockIR> basicBlocks = function.reverseCFG();
             for(BlockIR bb : basicBlocks) {
                 int oldSize = liveOut.get(bb).size();
-                for(BlockIR succ : bb.successors) {
+                for(BlockIR succ : bb.father.blks) {
                     HashSet<RegIR> regs = new HashSet<>(liveOut.get(succ));
                     regs.removeAll(definedRegisters.get(succ));
                     regs.addAll(usedRegisters.get(succ));
@@ -141,44 +124,31 @@ public class LiveAnalyser {
         }
     }
 
-    public HashMap<BlockIR,HashSet<RegIR>> getLiveOut(Function function) {
+    public HashMap<BlockIR,HashSet<RegIR>> getLiveOut(FuncIR function) {
         calcLiveOut(function, false);
         return liveOut;
     }
 
-    public void getInferenceGraph(Function function,
-                                  Graph inferenceGraph,
-                                  Graph moveGraph
-    ) {
+    public void getInferenceGraph(FuncIR function,Graph inferenceGraph,Graph moveGraph) {
         calcLiveOut(function, true);
 
         inferenceGraph.clear();
         if(moveGraph != null)
             moveGraph.clear();
 
-        for(BlockIR bb : function.basicblocks) {
-            for(IRInstruction inst = bb.head; inst != null; inst = inst.next) {
-                inferenceGraph.addRegisers(trans(inst.getDefRegs()));
-                inferenceGraph.addRegisers(trans(inst.getUseRegs()));
-            }
-        }
-
-        /* calculate the inference graph and move graph when needed */
-        for(BlockIR bb : function.basicblocks) {
+        for(BlockIR bb : function.blks) {
             HashSet<RegIR> liveNow = new HashSet<>(liveOut.get(bb));
-            for(IRInstruction inst = bb.tail; inst != null; inst = inst.prev) {
-                boolean isMBR = isMoveBetweenRegisters(inst);
+            for(Quad inst : bb.quads) {
+                boolean isMBR = false;
                 for(RegIR reg1 : trans(inst.getDefRegs())) {
                     for(RegIR reg2 : liveNow) {
-                        if(isMBR && moveGraph != null && ((Move)inst).src == reg1) {
+                        if(isMBR && moveGraph != null && ((Assign)inst).dest == reg1) {
                             moveGraph.addEdge(reg1, reg2);
                             continue;
                         }
                         inferenceGraph.addEdge(reg1, reg2);
                     }
                 }
-                liveNow.removeAll(trans(inst.getDefRegs()));
-                liveNow.addAll(trans(inst.getUseRegs()));
             }
         }
 

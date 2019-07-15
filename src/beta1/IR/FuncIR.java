@@ -45,4 +45,12 @@ public class FuncIR {
     public void addVar(RegIR reg) {
         funcvar.add(reg);
     }
+
+    public LinkedList<BlockIR> reverseCFG() {
+        LinkedList<BlockIR> tmp = new LinkedList<>();
+        for (int i=blks.size()-1;i>=0;i--) {
+            tmp.add(blks.get(i));
+        }
+        return tmp;
+    }
 }

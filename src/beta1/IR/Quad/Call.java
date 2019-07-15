@@ -4,6 +4,7 @@ import beta1.IR.RegIR;
 import beta1.IR.ValueIR;
 import beta1.Trans.Translator;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Call extends Quad {
@@ -20,5 +21,11 @@ public class Call extends Quad {
     @Override
     public void accept(Translator visitor) {
         visitor.visit(this);
+    }
+    @Override
+    public LinkedList<RegIR> getDefRegs() {
+        LinkedList<RegIR> tmp = new LinkedList<>();
+        tmp.add(ret);
+        return tmp;
     }
 }

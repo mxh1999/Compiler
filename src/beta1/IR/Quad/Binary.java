@@ -4,6 +4,8 @@ import beta1.IR.RegIR;
 import beta1.IR.ValueIR;
 import beta1.Trans.Translator;
 
+import java.util.LinkedList;
+
 public class Binary extends Quad{
     public enum Opcode {
         ADD, SUB, MUL, DIV, MOD,
@@ -34,5 +36,11 @@ public class Binary extends Quad{
     @Override
     public void accept(Translator visitor) {
         visitor.visit(this);
+    }
+    @Override
+    public LinkedList<RegIR> getDefRegs() {
+        LinkedList<RegIR> ret = new LinkedList<>();
+        ret.add(ans);
+        return ret;
     }
 }
