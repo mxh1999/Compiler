@@ -45,6 +45,15 @@ public class GraphAllocator {
     }
 
     void processFunction() {
+        origin= new Graph();
+        while (true) {
+            analyser.getInferenceGraph(function,origin,null);
+            graph = new Graph(origin);
+            do {
 
+            } while (!worklist.isempty())
+            getColor();
+
+        }
     }
 }
