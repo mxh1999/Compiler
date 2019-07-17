@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class GraphAllocator {
     private IRContext ir;
 
-    private LinkedList<String> generalRegisters = new LinkedList<>();
+    private LinkedList<String> allreg = new LinkedList<>();
     private static LiveAnalyser analyser =new LiveAnalyser();
     private int K;
 
@@ -31,21 +31,21 @@ public class GraphAllocator {
 
     public GraphAllocator(IRContext _ir) {
         ir=_ir;
-        generalRegisters.add( "rax");
-        generalRegisters.add( "rcx");
-        generalRegisters.add( "rdx");
-        generalRegisters.add( "rbx");
-        generalRegisters.add( "rsi");
-        generalRegisters.add( "rdi");
-        generalRegisters.add( "r8");
-        generalRegisters.add( "r9");
-        generalRegisters.add( "r10");
-        generalRegisters.add( "r11");
-        generalRegisters.add( "r12");
-        generalRegisters.add( "r13");
-        generalRegisters.add( "r14");
-        generalRegisters.add( "r15");
-        K =generalRegisters.size();
+        allreg.add( "rax");
+        allreg.add( "rcx");
+        allreg.add( "rdx");
+        allreg.add( "rbx");
+        allreg.add( "rsi");
+        allreg.add( "rdi");
+        allreg.add( "r8");
+        allreg.add( "r9");
+        allreg.add( "r10");
+        allreg.add( "r11");
+        allreg.add( "r12");
+        allreg.add( "r13");
+        allreg.add( "r14");
+        allreg.add( "r15");
+        K =allreg.size();
     }
 
     public void init() {
@@ -98,7 +98,7 @@ public class GraphAllocator {
     }
     private void getColor() {
         for (RegIR reg : stack) {
-            HashSet<String> okColors = new HashSet<>(generalRegisters);
+            HashSet<String> okColors = new HashSet<>(allreg);
             for (RegIR neighbor : origin.getAdjacents(reg)) {
                 if (colors.containsKey(neighbor))
                     okColors.remove(colors.get(neighbor));
@@ -107,7 +107,7 @@ public class GraphAllocator {
                 spilllist.add(reg);
             }   else {
                 String tmp = null;
-                for (String reg2: generalRegisters)
+                for (String reg2: allreg)
                     if (okColors.contains(reg2)) {
                         tmp = reg2;
                         break;
