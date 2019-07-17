@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beta1/Trans/GraphAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="50" lean-forward="true" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+            <state relative-caret-position="-1065">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,6 +92,7 @@
       <replace>RegIR</replace>
       <replace>BlockIR</replace>
       <replace>tmp</replace>
+      <replace>allreg</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -407,12 +408,12 @@
       <workItem from="1562909717732" duration="9315000" />
       <workItem from="1563084078118" duration="12824000" />
       <workItem from="1563163004001" duration="8899000" />
-      <workItem from="1563338294133" duration="7055000" />
+      <workItem from="1563338294133" duration="7448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="559653000" />
+    <option name="totallyTimeSpent" value="560046000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -926,8 +927,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beta1/Trans/GraphAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="50" lean-forward="true" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+        <state relative-caret-position="-1065">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
