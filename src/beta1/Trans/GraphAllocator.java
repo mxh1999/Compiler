@@ -106,15 +106,15 @@ public class GraphAllocator {
             if (okColors.isEmpty()) {
                 spilllist.add(reg);
             }   else {
-                String pr = null;
+                String tmp = null;
                 for (String reg2: generalRegisters)
                     if (okColors.contains(reg2)) {
-                        pr = reg2;
+                        tmp = reg2;
                         break;
                     }
-                if (pr == null)
-                    pr = okColors.iterator().next();
-                colors.put(reg,pr);
+                if (tmp == null)
+                    tmp = okColors.iterator().next();
+                colors.put(reg,tmp);
             }
         }
     }
