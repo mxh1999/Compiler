@@ -63,7 +63,7 @@ public class GraphAllocator {
         }
     }
     public void doit() {
-        for (FuncIR fun:ir.global.funcs.values()) {
+        for (FuncIR fun:ir.global.func.values()) {
             function = fun;
             processFunction();
         }

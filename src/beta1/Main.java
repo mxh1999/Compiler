@@ -62,6 +62,7 @@ public class Main {
         itcorrector.visit(ir);
 
         GraphAllocator allocator = new GraphAllocator(ir);
+        allocator.init();
         allocator.doit();
 
         Translator translator = new Translator(ir);
